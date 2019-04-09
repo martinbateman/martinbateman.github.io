@@ -133,14 +133,36 @@
   <div id="od-loading"></div>
   <div id="od-content">
 <p>
-This page is experimental. There are probably bugs or at least weird things. If you find a bug or a weird thing could you let me know.
+This lab introduces the use of Windows Server. You are going to install your first copy of Windows Server 2016
+You will need a Windows Server 2016 R2 ISO and a product key. The ISO should be on the d: drive of the lab computer and
+you can use a KMS key from <a href="https://technet.microsoft.com/en-gb/library/jj612867.aspx">https://technet.microsoft.com/en-gb/library/jj612867.aspx</a>
+You can download the ISOs used in this module, as well as VMware Workstation from onethehub.com. Details are on Blackboard in the useful links section.
+
+If you have never used VMware before then I suggest you watch 
+<a href="https://www.lynda.com/Fusion-tutorials/Installing-VMware-Workstation/163066/175191-4.html?org=uclan.ac.uk">this</a>. You do not need to install VMware 
+Workstation 
+in the lab as it is already installed.
+
 </p>
 <ol id="instructions">
-  <li>References of no relevance to the assignment.</li>
-  <li>Fewer than 4 references.</li>
-  <li>Tests are superficial. Only measuring metrics such as RTT, throughput, packet loss or jitter.</li>
-  <li>No testing</li>
-  <li>Lots of spelling and grammatical mistakes. Trouble understanding sentences.</li>
+  <li>Start VMware workstation and click 'Create a New Virtual Machine'. Select 'Typical (recommended)' and click next.</li>
+  <li>Select 'I will install the operating system later.' and click Next.</li>
+  <li>For the guest operating systems select Microsoft Windows and for the version select 'Windows Server 2016' and click next.</li>
+  <li>For the machine name use 'Windows Server 2016', change the location to the e: drive. You should create a folder on the e: drive to store the virtual machines. Use your username as the folder name.</li>
+  <li>Leave the disk capacity as 60 GB and leave the disk as 'Split virtual disk into multiple files'. Click Next.</li>
+  <li>Click 'customize Hardware'. Change the Memory to 4 GB and change the number of processors to 2. Change the Network Adapter to Host-only, finally 
+change the CD/DVD to Use ISO image file. Select the Windows Server 2016 ISO from the d: drive. Click 'Close'.</li>
+  <li>Click 'Finish'.</li>
+  <li>Click 'Power on this Virtual Machine'.</li>
+<h2>Installing Windows Server 2016</h2>
+  <li>Insert the ISO into the virtual CDROM and power on the virtual machine.<li>
+  <li>Click Install now</li>
+  <li>Enter your product key, You can either use a product key from OnTheHub or you can use a KMS Key from Microsoft see <a href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
+  <li>Select Windows Server 2016 (Desktop Experience)<li>
+  <li>Accept the License and click next</li>
+  <li>Select Custom: Install Windows only (advance)</li>
+  <li>Click Next</li>
+  <li>Wait while it install Windows. This could take a while.</li>
 </ol>
 <BR/>
 <script>
@@ -210,7 +232,7 @@ function clicked (cellID){
           var contentURL = msGraphApiRoot + "/drive/items/" + itemID + "/content";
 
           lis = document.getElementById ('instructions').getElementsByTagName ('li');
-          var labData = Array (lis.length+1);
+          var labData = Array (lis.length);
           for (i = 0; i < lis.length; i ++){
             if (lis[i].getAttribute ("class") == "tick") {
               labData[i] = 1;
