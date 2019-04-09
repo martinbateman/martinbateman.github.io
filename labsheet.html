@@ -211,7 +211,7 @@ function clicked (cellID){
 
           lis = document.getElementById ('instructions').getElementsByTagName ('li');
           var labData = Array (lis.length+1);
-          for (i = 0; i <= lis.length; i ++){
+          for (i = 0; i < lis.length; i ++){
             if (lis[i].getAttribute ("class") == "tick") {
               labData[i] = 1;
             } else {
@@ -270,7 +270,7 @@ function clicked (cellID){
                 if (this.readyState == 4 && this.status == 200) {
                   var labData = JSON.parse (xhttp.responseText);
                   lis = document.getElementById ('instructions').getElementsByTagName ('li');
-                  for (var i = 0; i <= lis.length; i ++){
+                  for (var i = 0; i < lis.length; i ++){
                     var isChecked = labData[i];
                     if (isChecked == 1){
                       clicked (i);
