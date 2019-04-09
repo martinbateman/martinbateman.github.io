@@ -271,10 +271,10 @@ function clicked (cellID){
                   var labData = JSON.parse (xhttp.responseText);
                   lis = document.getElementById ('instructions').getElementsByTagName ('li');
                   for (var i = 0; i <= lis.length; i ++){
-                      var isChecked = labData[i];
-                      if (isChecked == 1){
-                        clicked (i);
-                      }
+                    var isChecked = labData[i];
+                    if (isChecked == 1){
+                      clicked (i);
+                    }
                   }
                 document.getElementById("od-title").innerHTML = pageTitle;
                 saved = 1;
