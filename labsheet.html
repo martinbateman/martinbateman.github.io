@@ -3,6 +3,7 @@
   <title>CO3509 Lab 1 - Example</title>
   <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
   <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
   <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
   <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
@@ -30,6 +31,22 @@
   </div>
 
   <div id="od-loading"></div>
+<script>
+var options = {
+  classname: 'my-class',
+  id: 'my-id',
+  target: document.getElementById('myDivId')
+};
+
+var nanobar = new Nanobar( options );
+
+// move bar
+nanobar.go( 30 ); // size bar 30%
+//nanobar.go( 76 ); // size bar 76%
+
+// size bar 100% and and finish
+//nanobar.go(100);
+</script>
   <div id="od-content">
 <p>
 This lab introduces the use of Windows Server. You are going to install your first copy of Windows Server 2016
@@ -64,6 +81,12 @@ href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
   <li>Select Custom: Install Windows only (advance)</li>
   <li>Click Next</li>
   <li>Wait while it install Windows. This could take a while.</li>
+  <li>Enter a password to use for the Administrator account, Figure \ref{enterNewPassword}. I suggest using 'Pa55word' for now. For your assignments you should use a more secure password.</li>
+  <li>Once your server has booted. Login using the password you have just set.</li>
+  <li>You should be asked if you want to find PCs, devices and content on this network. Select No.</li>
+  <li>Wait until the Server Manager Dashboard has loaded then explore the Server Manager. Get familiar with the options (you don't have to understand what they do yet).</li>
+<h2>Advanced</h2>
+  <li>What is the difference between Server Core and Server with GUI? Give advantaged and disadvantages of each</li>
 </ol>
 <BR/>
   </div>
