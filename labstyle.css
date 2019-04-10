@@ -145,6 +145,7 @@ li.tick{
 li.tick:after{
   content: "\2713";
   color: darkgreen;
+  font-weight: bold;
 }
 
 li.missed{
