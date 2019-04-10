@@ -44,11 +44,18 @@ in the lab as it is already installed.
 </p>
 <ol id="instructions">
   <li>Start VMware workstation and click 'Create a New Virtual Machine'. Select 'Typical (recommended)' and click next.</li>
-<div class="collapsible">
+<button class="collapsible">Open</button>
+<div class="content">
 this is a test
 this is the second line.
 </div>
   <li>Select 'I will install the operating system later.' and click Next.</li>
+<button class="collapsible">Open</button>
+<div class="content">
+this is a test
+this is the second line.
+</div>
+
   <li>For the guest operating systems select Microsoft Windows and for the version select 'Windows Server 2016' and click next.</li>
   <li>For the machine name use 'Windows Server 2016', change the location to the e: drive. You should create a folder on the e: drive to store the virtual 
 machines. Use your username as the folder name.</li>
@@ -77,5 +84,21 @@ href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
 <BR/>
   </div>
   <script type="text/javascript" src="labjs.js"></script>
+  <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+  </script>
 </BODY>
 </HTML>
