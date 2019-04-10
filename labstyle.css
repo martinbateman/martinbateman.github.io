@@ -148,10 +148,6 @@ li.tick:after{
   font-weight: bold;
 }
 
-li.missed{
-  text-decoration: underline;
-}
-
 li.missed:after{
   content: "<";
   color: red;
