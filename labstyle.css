@@ -21,6 +21,10 @@
 }
 
 
+#od-content{
+  width: 80%;
+}
+
 #od-commands {
   float: right;
   margin-right: 10pt;
