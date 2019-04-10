@@ -6,12 +6,11 @@ for (i = 0; i < lis.length; i ++){
 
 
 var data = loadFromCookie();
-    if (data)
-    {
-      if (!baseUrl)
-        msGraphApiRoot = data.apiRoot;
-      showCustomLoginButton(!data.signedin)
-    }
+if (data) {
+  if (!baseUrl)
+    msGraphApiRoot = data.apiRoot;
+  showCustomLoginButton(!data.signedin)
+}
 
 $(document).on({
   ajaxStart: function() {$('body').addClass('loading');},
@@ -21,57 +20,6 @@ $(document).on({
 
 var baseUrl = getQueryVariable("baseUrl")
 msGraphApiRoot = (baseUrl) ? baseUrl : "https://graph.microsoft.com/v1.0/me";
-
-
-function clicked (cellID){
-  if (globalToken != ""){
-    saved = 0;
-    document.getElementById("od-title").innerHTML = pageTitle + " (not saved)";
-  }
-
-  // set/remove colour background
-  var parent = document.getElementById (cellID);
-  if (parent.getAttribute ("class") == "tick") {
-    parent.removeAttribute ("class");
-    for (i = cellID-1; i >= 0; i --){
-      li = document.getElementById (i);
-      if (li.getAttribute ("class") == "tick") {
-        break;
-      } else {
-        li.removeAttribute ("class");
-      }
-    }
-
-  } else {
-    parent.setAttribute ("class", "tick");
-    for (i = cellID-1; i >= 0; i --){
-      li = document.getElementById (i);
-      if (li.getAttribute ("class") != "tick") {
-        li.setAttribute ("class", "missed");
-      }
-    }
-  }
-
-  lis = document.getElementById ('instructions').getElementsByTagName ('li');
-  var last = -1;
-  clicked = 0;
-  for (var i = 0; i < lis.length; i ++){
-    if (lis[i].getAttribute ("class") == "tick") {
-      last = i;
-      clicked = clicked + 1;
-    }
-  }
-
-//  percent = (clicked/lis.length) * 100;
-//  nanobar.go (percent);  
-
-  for (var i = 0; i < last; i ++){
-    if (lis[i].getAttribute ("class") != "tick") {
-      lis[i].setAttribute ("class", "missed");
-    }
-  }
-}
-
 
 
 function uploadItem (){
@@ -176,5 +124,55 @@ function uploadItem (){
           });
     return (false);
     }
+
+function clicked (cellID){
+  console.log ("Run clicked");
+  if (globalToken != ""){
+    saved = 0;
+    document.getElementById("od-title").innerHTML = pageTitle + " (not saved)";
+  }
+
+  // set/remove colour background
+  var parent = document.getElementById (cellID);
+  if (parent.getAttribute ("class") == "tick") {
+    parent.removeAttribute ("class");
+    for (i = cellID-1; i >= 0; i --){
+      li = document.getElementById (i);
+      if (li.getAttribute ("class") == "tick") {
+        break;
+      } else {
+        li.removeAttribute ("class");
+      }
+    }
+
+  } else {
+    parent.setAttribute ("class", "tick");
+    for (i = cellID-1; i >= 0; i --){
+      li = document.getElementById (i);
+      if (li.getAttribute ("class") != "tick") {
+        li.setAttribute ("class", "missed");
+      }
+    }
+  }
+  lis = document.getElementById ('instructions').getElementsByTagName ('li');
+  var last = -1;
+  var noSelected = 0;
+  for (var i = 0; i < lis.length; i ++){
+    if (lis[i].getAttribute ("class") == "tick") {
+      last = i;
+      noSelected = noSelected + 1;
+    }
+  }
+
+  percent = (noSelected/lis.length) * 100;
+  nanobar.go (percent);
+
+  for (var i = 0; i < last; i ++){
+    if (lis[i].getAttribute ("class") != "tick") {
+      lis[i].setAttribute ("class", "missed");
+    }
+  }
+}
+
 
 odauth ();

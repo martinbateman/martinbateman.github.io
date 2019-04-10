@@ -3,20 +3,18 @@
   <title>CO3509 Lab 1 - Example</title>
   <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
   <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
   <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
   <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
-
-<script>
-  var moduleCode = "CO3509";
-  var assignmentNumber = "1";
-  var maxX = 0;
-  var maxY = 0;
-  var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + assignmentNumber + ".json"; 
-  var pageTitle = "CO3509 Lab 1 - Example";
+  <script>
+    var moduleCode = "CO3509";
+    var assignmentNumber = "1";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + assignmentNumber + ".json"; 
+    var pageTitle = "CO3509 Lab 1 - Example";
   </script>
 </head>
-<BODY>
+<body>
  <div id="od-site">
     <div id="od-commands">
       <div id="od-login" style="display: hidden">
@@ -73,6 +71,15 @@ href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
 </ol>
 <BR/>
   </div>
+  <script>
+    var options = {
+  classname: 'my-class',
+  id: 'my-id',
+  target: document.getElementById('myDivId')
+};
+
+var nanobar = new Nanobar( options );
+  </script>
   <script type="text/javascript" src="labjs.js"></script>
 </BODY>
 </HTML>
