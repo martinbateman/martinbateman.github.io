@@ -62,8 +62,8 @@ function clicked (cellID){
     }
   }
 
-  percent = (clicked/lis.length) * 100;
-  nanobar.go (percent);  
+//  percent = (clicked/lis.length) * 100;
+//  nanobar.go (percent);  
 
   for (var i = 0; i < last; i ++){
     if (lis[i].getAttribute ("class") != "tick") {
@@ -176,14 +176,5 @@ function uploadItem (){
           });
     return (false);
     }
-
-var options = {
-  classname: 'my-class',
-  id: 'my-id',
-  target: document.getElementById('myDivId')
-};
-
-var nanobar = new Nanobar( options );
-
 
 odauth ();
