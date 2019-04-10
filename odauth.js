@@ -30,6 +30,17 @@
 //
 // subsequent calls to odauth() will usually complete immediately without the
 // popup because the cookie is still fresh.
+
+// keep the token so we can use it later
+var globalToken = "";
+// are we saved? 1 = yes, 0 = no
+var saved = 1;
+// item id of the file we are writing to
+var itemID = "";
+// the dir on onedrive we are going to write to
+var settingDir = "appData";
+
+
 function odauth(wasClicked) {
   ensureHttps();
   var token = getTokenFromCookie();
@@ -268,5 +279,83 @@ function onAuthenticated(token, authWindow) {
   } else {
     alert("Error signing in");
   }
+}
+
+
+function signOut() {
+  logoutOfAuth();
+  saveToCookie( { "apiRoot": msGraphApiRoot, "signedin": false } );
+  $('#od-breadcrumb').empty();
+  $('#od-items').empty();
+  location.reload();
+  clearInterval ();
+  }
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
+
+
+function saveToCookie(obj) {
+  var expiration = new Date();
+  expiration.setTime(expiration.getTime() + 3600 * 1000);
+  var data = JSON.stringify(obj);
+  var cookie = "UCLanODAuth=" + data +"; path=/; expires=" + expiration.toUTCString();
+
+  if (document.location.protocol.toLowerCase() == "https") {
+    cookie = cookie + ";secure";
+  }
+  document.cookie = cookie;
+}
+
+function loadFromCookie() {
+  var cookies = document.cookie;
+  var name = "UCLanODAuth=";
+  var start = cookies.indexOf(name);
+  if (start >= 0) {
+    start += name.length;
+    var end = cookies.indexOf(';', start);
+    if (end < 0) {
+      end = cookies.length;
+    } else {
+      postCookie = cookies.substring(end);
+    }
+
+    var value = cookies.substring(start, end);
+    return JSON.parse(value);
+  }
+  return "";
+}
+
+function showCustomLoginButton(show) {
+  var loginButton = document.getElementById("od-login");
+  loginButton.style.display = show ? "block" : "none";
+
+  var logoutButton = document.getElementById("od-logoff");
+  logoutButton.style.display = show ? "none" : "block";
+}
+
+function signInToOneDrive() {
+  var appInfo = {
+    "clientId": "da55778d-4c93-4a5d-9ac9-7e3d95c531ef",
+    "redirectUri": "https://martinbateman.github.io/callback.html", // this will need to change 
+    "scopes": "files.readwrite.all",
+    "authServiceUri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
+  };
+  provideAppInfo(appInfo);
+
+  var baseUrl = getQueryVariable("baseUrl")
+  msGraphApiRoot = (baseUrl) ? baseUrl : "https://graph.microsoft.com/v1.0/me";
+
+  challengeForAuth();
+
+  saveToCookie( { "apiRoot": msGraphApiRoot, "signedin": true } );
+  return false;
 }
 
