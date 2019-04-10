@@ -177,4 +177,13 @@ function uploadItem (){
     return (false);
     }
 
+var options = {
+  classname: 'my-class',
+  id: 'my-id',
+  target: document.getElementById('myDivId')
+};
+
+var nanobar = new Nanobar( options );
+
+
 odauth ();
