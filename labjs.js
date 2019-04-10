@@ -126,7 +126,6 @@ function uploadItem (){
     }
 
 function clicked (cellID){
-  console.log ("Run clicked");
   if (globalToken != ""){
     saved = 0;
     document.getElementById("od-title").innerHTML = pageTitle + " (not saved)";
@@ -174,5 +173,11 @@ function clicked (cellID){
   }
 }
 
+var options = {
+  classname: 'my-class',
+  id: 'my-id',
+  target: document.getElementById('myDivId')
+};
 
+var nanobar = new Nanobar( options );
 odauth ();
