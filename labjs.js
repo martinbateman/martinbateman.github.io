@@ -54,11 +54,16 @@ function clicked (cellID){
 
   lis = document.getElementById ('instructions').getElementsByTagName ('li');
   var last = -1;
+  clicked = 0;
   for (var i = 0; i < lis.length; i ++){
     if (lis[i].getAttribute ("class") == "tick") {
       last = i;
+      clicked = clicked + 1;
     }
   }
+
+  percent = (clicked/lis.length) * 100;
+  nanobar.go (percent);  
 
   for (var i = 0; i < last; i ++){
     if (lis[i].getAttribute ("class") != "tick") {
