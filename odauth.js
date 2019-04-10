@@ -249,3 +249,24 @@ function popup(url) {
 
   popup.focus();
 }
+
+function onAuthenticated(token, authWindow) {
+  globalToken = token;
+  if (token) {
+    if (authWindow) {
+      removeLoginButton();
+      authWindow.close();
+    }
+    downloadItem ();
+    window.setInterval(function(){ // check if we need to save the page every 5 seconds if we are logged in.
+      if (saved == 0){
+        uploadItem ();
+        document.getElementById("od-title").innerHTML = pageTitle;
+        saved = 1;
+      }
+    }, 5000);
+  } else {
+    alert("Error signing in");
+  }
+}
+
