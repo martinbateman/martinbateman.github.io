@@ -1,29 +1,13 @@
 <HTML>
 <head>
   <title>CO3509 Lab 1 - Example</title>
-  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/style.css"/>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
   
   <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
   <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
 
-  <style>
-    li.tick{
-      text-decoration: line-through;
-    }
-    li.tick:after{
-      content: "\2713";
-      color: darkgreen;
-    }
-    li.missed{
-      text-decoration: underline;
-    }
-    li.missed:after{
-      content: "<--";
-      color: red;
-    }
-  </style>
 <script>
     function signInToOneDrive()
     {
@@ -148,7 +132,8 @@ in the lab as it is already installed.
   <li>Start VMware workstation and click 'Create a New Virtual Machine'. Select 'Typical (recommended)' and click next.</li>
   <li>Select 'I will install the operating system later.' and click Next.</li>
   <li>For the guest operating systems select Microsoft Windows and for the version select 'Windows Server 2016' and click next.</li>
-  <li>For the machine name use 'Windows Server 2016', change the location to the e: drive. You should create a folder on the e: drive to store the virtual machines. Use your username as the folder name.</li>
+  <li>For the machine name use 'Windows Server 2016', change the location to the e: drive. You should create a folder on the e: drive to store the virtual 
+machines. Use your username as the folder name.</li>
   <li>Leave the disk capacity as 60 GB and leave the disk as 'Split virtual disk into multiple files'. Click Next.</li>
   <li>Click 'customize Hardware'. Change the Memory to 4 GB and change the number of processors to 2. Change the Network Adapter to Host-only, finally 
 change the CD/DVD to Use ISO image file. Select the Windows Server 2016 ISO from the d: drive. Click 'Close'.</li>
@@ -157,7 +142,8 @@ change the CD/DVD to Use ISO image file. Select the Windows Server 2016 ISO from
 <h2>Installing Windows Server 2016</h2>
   <li>Insert the ISO into the virtual CDROM and power on the virtual machine.</li>
   <li>Click Install now</li>
-  <li>Enter your product key, You can either use a product key from OnTheHub or you can use a KMS Key from Microsoft see <a href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
+  <li>Enter your product key, You can either use a product key from OnTheHub or you can use a KMS Key from Microsoft see <a 
+href="https://technet.microsoft.com/en-us/library/jj612867.aspx">here</a>.</li>
   <li>Select Windows Server 2016 (Desktop Experience)</li>
   <li>Accept the License and click next</li>
   <li>Select Custom: Install Windows only (advance)</li>
@@ -200,11 +186,21 @@ function clicked (cellID){
         li.setAttribute ("class", "missed");
       }
     }
-
-
-
   }
 
+  lis = document.getElementById ('instructions').getElementsByTagName ('li');
+  var last = -1;
+  for (var i = 0; i < lis.length; i ++){
+    if (lis[i].getAttribute ("class") == "tick") {
+      last = i;
+    }
+  }
+
+  for (var i = 0; i < last; i ++){
+    if (lis[i].getAttribute ("class") != "tick") {
+      lis[i].setAttribute ("class", "missed");
+    }
+  }
 
 //total;
 }
