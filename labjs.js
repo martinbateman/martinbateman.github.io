@@ -26,15 +26,17 @@ function uploadItem (){
           var contentURL = msGraphApiRoot + "/drive/items/" + itemID + "/content";
 
           lis = document.getElementById ('instructions').getElementsByTagName ('li');
-          var labData = Array (lis.length);
+          var labData = {};
+          var tasksDone = Array (lis.length);
           for (i = 0; i < lis.length; i ++){
             if (lis[i].getAttribute ("class") == "tick") {
-              labData[i] = 1;
+              tasksDone[i] = 1;
             } else {
-              labData[i] = 0;
+              tasksDone[i] = 0;
             }
           }
 
+          labData['tasks'] = tasksDone;
           $.ajax({
             url: contentURL,
             dataType: 'json',
@@ -86,9 +88,10 @@ function uploadItem (){
                 xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   var labData = JSON.parse (xhttp.responseText);
+                  var tasksDone = labData['tasks'];
                   lis = document.getElementById ('instructions').getElementsByTagName ('li');
                   for (var i = 0; i < lis.length; i ++){
-                    var isChecked = labData[i];
+                    var isChecked = tasksDone[i];
                     if (isChecked == 1){
                       clicked (i);
                     }
