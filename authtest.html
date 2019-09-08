@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>authtest</title>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+</title>
+</head>
+<body>
+HEllo
+<script>
+// Configuration options for MSAL @see https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL.js-1.0.0-api-release#configuration-options
+const msalConfig = {
+	auth: {
+		clientId: "f3292050-0fb3-47f6-a550-8f8cfdaf4c98", // Client Id of the registered application
+		redirectUri: "msalf3292050-0fb3-47f6-a550-8f8cfdaf4c98://auth",
+	},
+};
+const graphScopes = ["files.readwrite.all"]; // An array of graph scopes
+
+// Important Note: This library implements loginPopup and acquireTokenPopup flow, remember this while initializing the msal
+// Initialize the MSAL @see https://github.com/AzureAD/microsoft-authentication-library-for-js#1-instantiate-the-useragentapplication
+const msalApplication = new Msal.UserAgentApplication(msalConfig);
+const options = new MicrosoftGraph.MSALAuthenticationProviderOptions(graphScopes);
+const authProvider = new MicrosoftGraph.ImplicitMSALAuthenticationProvider(msalApplication, options);
+
+const opts = {
+	authProvider, // An instance created from previous step
+};
+const Client = MicrosoftGraph.Client;
+const client = Client.initWithMiddleware(opts);
+
+try {
+	let userDetails = client.api("/me").get();
+	console.log(userDetails);
+} catch (error) {
+	throw error;
+}
+</script>
+
+</body>
+</html>
