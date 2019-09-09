@@ -1,0 +1,188 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "5";
+    var sessionTitle = "Active Directory";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<h1>Introduction</h1>
+<p>
+In this lab you are going to add a Windows 10 computer to your Windows Domain.
+To do this you are going to add a Computer account to the domain and then
+add some more user accounts.
+</p>
+
+<ol id="instructions">
+<h1>Joining the domain</h1>
+
+  <li>Change to your Windows 10 Virtual Machine</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Make sure that you Windows 10 Virtual Machine uses the same virtual network (VMnet) as your Windows server</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Set the IP address to 10.0.1.10. You should set appropiate netmask, DNS and default route</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+<p>An appropiate network, dns and default route mean setting that would work on this network. You have already set
+them up for the server we used a netmask of 255.255.255.0 (in other words a /24).
+</p>
+<p>The DNS has to be set to the Windows Server. On the Server you set the DNS to 10.0.1.2 which is the Windows Server. The DNS
+has to be set to the Windows Server in order to join the Active Directory Domain. When we join the domain the first thing that will
+happen is that the Windows 10 computer will look up the AD domain name in the DNS. The easiest way to make this work is to use point
+it at the Windows Server which is hosting the DNS.
+</p>
+</div>
+
+  <li>Open the Control Panel and then open System</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Beneath the Computer name click change settings</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Network ID</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Select this computer is part of a business network; I use it to connect to other computers at work</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Next</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Select My company uses a network with a domain</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Next</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Next</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Enter the following<br/>
+      <table>
+        <tr>
+          <td>Username</td><td>Administrator</td>
+        </tr>
+        <tr>
+	   <td>Password</td><td>The password you set</td>
+        </tr>
+        <tr>
+	  <td>Domain</td><td>co2516.ceps.uclan.ac.uk</td>
+        </tr>
+      </table>
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Next</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Enter the details for the computer as follows<br/>
+    <table>
+      <tr>
+	<td>computer name</td><td>client</td>
+      </tr>
+      <tr>
+	<td>computer domain</td><td>co2516.ceps.uclan.ac.uk</td>
+      </tr>
+    </table>
+  </li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Click Next</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>You will be asked for account details that can add computers to the domain. Use the Administrator account.</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Restart the computer for the changes to take effect.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+<h1>Testing</h1>
+
+  <li>Log into the Windows 10 computer using the user account you created last week</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+
+  <li>Debug your system if it doesn't work.</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>If you left your account in the Administrator group then you should remove it from your user account</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+  <li>Try logging in again</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+
+
+<h1>Setting a Group Policy</h1>
+  <li>Using the information from <a target="_blank" href="https://www.itgeekrambling.co.uk/windows-server-2016-changing-the-desktop-background-using-group-policy/">IT Geek Rambling</a>
+use a Group Policy to set a specific desktop background for the users in your domain.</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+<p>
+You have to make the change on the Windows Server but the image will show on the Windows client. This menas that the Windows client must have access to the image you
+decide to use as a background. The easiest way to make sure the Windows client can access the image is to put the image on the Windows client. The path you set for the
+policy will be the path on the Windows client and wouldn't work on any other machine.
+</p>
+</div>
+
+  <li>How could you make this rule only apply to a selection of users?</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
