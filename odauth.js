@@ -343,7 +343,7 @@ function showCustomLoginButton(show) {
 
 function signInToOneDrive() {
   var appInfo = {
-    "clientId": "da55778d-4c93-4a5d-9ac9-7e3d95c531ef",
+    "clientId": "f3292050-0fb3-47f6-a550-8f8cfdaf4c98",
     "redirectUri": "https://martinbateman.github.io/callback.html", // this will need to change 
     "scopes": "files.readwrite.all",
     "authServiceUri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
