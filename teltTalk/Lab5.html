@@ -1,0 +1,116 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+  <script>
+    var moduleCode = "CO1507";
+    var sessionNumber = "6";
+    var sessionTitle = "Custom Subnetting";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Questions</div>
+Answer the following questions on a separate paper and keep both the tutorial sheet and the answers.
+
+  <li>What is the effect of subnetting on network performance and security?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>What is the subnet mask for  /24  /25  /26  /27  /28  /29 and /30?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>How many valid host addresses can be supported by the network address 200.1.2.0  using all the / notations in question 2.</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>What is the difference between 192.168.1.64/24 and 192.168.1.64/27</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>How many valid hosts can 197.1.2.32/27 network address?</li>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>What is the subnet mask for 172.16.1.3/24</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>A local college has just finished a new building to house a Computing Department.  The college needs to setup 5 networked teaching labs. Each lab is 
+required
+to support between 20 and 25 computers and must be on a separate network. You have been given the following network address:
+203.168.15.0/24</li>
+<ol>
+  <li>Calculate the appropriate subnet mask required; the number of valid subnets produced and the number of valid hosts produced for each subnet.</li>
+  <li>Calculate the first, the last valid host ID, and the broadcast address in each of the subnets.</li>
+  <li>Calculate ALL the valid subnets.</li>
+  <li>Calculate the first, the last valid host ID, and the broadcast address in each of the subnets.</li>
+</ol>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Given the network address 200.1.2.0/30</li>
+<ol>
+  <li>What is the subnet mask?</li>
+  <li>List the first 5 network addresses that can be produced.</li>
+  <li>What is the first and last IP address for each network?</li>
+  <li>What would you use these subnets for? (You may need to google it)</li>
+<\ol>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+
+<div class="subtitle">Scenario</div>
+<p>
+You need to work in groups 
+</p>
+<p>
+An international manufacturing company that makes car parts. Among the components that are made, break disks and part of the car engine. The company uses a 
+number of machines that use high voltage. The company employs 45 people; 25 people working in the shop floor and the rest are distributed among the management 
+(5 people), sales (9 people), admin (5 people), Human Resources (1 person). The company occupies a building with several floors. You were approached by the 
+company to deploy a network that satisfies its operational needs. A report needs to be submitted that includes all the hardware and software and operational 
+needs. 
+</p>
+<ul>
+  <li>You need to decide on the hardware and software to be used.</li>
+  <li>You need to provide costing for the project which would include the set up and running costs.</li> 
+  <li>You need to provide a network diagram.</li>
+  <li>You need to provide an addressing scheme.</li>
+  <li>Make sure to plan your system for future expansion.</li>
+  <li>Justify your choices.</li>
+  <li>You may make assumptions where appropriate.</li>
+</ul>
+  </div>
+  <script type="text/javascript" src="labjs.js"></script>
+</body>
+</html>
