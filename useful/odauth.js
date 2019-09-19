@@ -38,8 +38,6 @@ var saved = 1;
 // item id of the file we are writing to
 var itemID = "";
 // the dir on onedrive we are going to write to
-var settingDir = "appData";
-
 
 function odauth(wasClicked) {
   ensureHttps();
