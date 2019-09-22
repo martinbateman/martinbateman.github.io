@@ -390,6 +390,11 @@ while (found == true){
   }
 }
 
+if (globalToken != ""){
+  saved = 0;
+  document.getElementById("od-title").innerHTML = pageTitle + " (not saved)";
+}
+
 // set/remove colour background
 var parent = document.getElementById (cellIDX+"-"+cellIDY);
 if (parent.getAttribute ("style") == "background-color: orange") {
