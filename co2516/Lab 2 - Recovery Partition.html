@@ -166,11 +166,24 @@ After the restore has finished the computer will reboot. Check that the changes 
   <li>The boot menu configuration is stored in menu.lst in the e: drive. Alter it so that you can store/restore from multiple image files rather than just one and fix the warning messages.</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
-
-
-
+</ol>
   </div>
   <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
 </body>
 </html>
 
