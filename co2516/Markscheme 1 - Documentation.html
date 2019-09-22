@@ -432,6 +432,8 @@ document.getElementById("total").innerHTML = gradeMap (total);
           var contentURL = msGraphApiRoot + "/drive/items/" + itemID + "/content";
 
           var assignmentData = Array(maxX+1);
+          console.log (maxX);
+          console.log (maxY);
           for (var i = 0; i <= maxX; i ++){
             assignmentData[i] = Array(maxY+1);
             for (var j = 0; j <= maxY; j ++){
