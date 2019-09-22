@@ -1,0 +1,538 @@
+<HTML>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/style.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+<script>
+  var moduleCode = "CO2516";
+  var assignmentNumber = "1";
+  var maxY = 0;
+  var maxX = 0;
+  var fileName = "/" + settingDir + "/" + moduleCode + "-assignment-" + assignmentNumber + ".json";
+  var pageTitle = "CO2516 Assignment 1 - Grade estimator";
+  </script>
+</head>
+
+<BODY>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: block;">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: none;">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title">CO2516 Assignment 1 - Grade estimator</div>
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-breadcrumb"></div>
+  <div id="od-content">
+<P>
+This allows you to estimate your mark based on which critria you have completed. You should note that you are
+not guaranteed to get the mark you work out using this tool.
+</P>
+<p>
+This page does not save your settings
+</p>
+<TABLE BORDER=1>
+<TR>
+  <TD></TD>
+  <td>Fail(20)</td>
+  <td>Pass(40)</td>
+  <td>2ii(50)</td>
+  <td>2i(60)</td>
+  <td>1st(70)</td>
+  <td>80+(80)</td>
+
+</TR>
+<TR>
+  <TD>Timeliness (20)<br> Dated entries showing that the lab book was developed during labs.</TD>
+  
+  <TD ID="0-0" onclick="javascript:clicked(0, 0)">Little evidence provided. One or two entries are dated and look as if they were made at the same time as the labs.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 20)/ 80 * 100;
+var target = document.getElementById ("0-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="1-0" onclick="javascript:clicked(1, 0)">Three or four entries are dated and look as if they were made along with the labs that they document.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 40)/ 80 * 100;
+var target = document.getElementById ("1-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="2-0" onclick="javascript:clicked(2, 0)">Five or six entries are dated and look as if they were make along with the labs they document.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 50)/ 80 * 100;
+var target = document.getElementById ("2-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="3-0" onclick="javascript:clicked(3, 0)">Seven or eight entries are dated and look as if they were made along with the labs they document.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 60)/ 80 * 100;
+var target = document.getElementById ("3-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="4-0" onclick="javascript:clicked(4, 0)">Nine or ten entries are dated and look as if they were made along with the labs they document.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 70)/ 80 * 100;
+var target = document.getElementById ("4-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="5-0" onclick="javascript:clicked(5, 0)">All entries are dated and look as if they were made along with the labs they document.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((20/100) * 80)/ 80 * 100;
+var target = document.getElementById ("5-0");
+target.setAttribute ("name", worth);
+</script>
+
+  
+</TR>
+<TR>
+  <TD>Observations (40)<br> Record of changes needed to be made from the linked material in order to make it work.</TD>
+  
+  <TD ID="0-1" onclick="javascript:clicked(0, 1)">There is nothing that gives any indication that the labs were completed or additional materials were used.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 20)/ 80 * 100;
+var target = document.getElementById ("0-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="1-1" onclick="javascript:clicked(1, 1)">Observations on three or four of the labs. Observations are poor and could not be used by someone else to recreate the task.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 40)/ 80 * 100;
+var target = document.getElementById ("1-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="2-1" onclick="javascript:clicked(2, 1)">Observations on five or six of the entries. Observations are of reasonable quality and could be used by someone with experience to recreate the lab.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 50)/ 80 * 100;
+var target = document.getElementById ("2-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="3-1" onclick="javascript:clicked(3, 1)">Observations on seven or eight of the entries. Observations are reasonable and could be used by someone with experience to recreate the lab</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 60)/ 80 * 100;
+var target = document.getElementById ("3-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="4-1" onclick="javascript:clicked(4, 1)">Observations for nine or ten of the entries. Observations are good and could be used by someone with little experience to recreate the lab.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 70)/ 80 * 100;
+var target = document.getElementById ("4-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="5-1" onclick="javascript:clicked(5, 1)">Excellent descriptions provided. Observations for nine or ten of the entries. Observations are excellent and could be used by someone with little experience to recreate the lab.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((40/100) * 80)/ 80 * 100;
+var target = document.getElementById ("5-1");
+target.setAttribute ("name", worth);
+</script>
+
+  
+</TR>
+<TR>
+  <TD>Sources (30)<br> Additional sources of material above and beyond the lab sheets.</TD>
+  
+  <TD ID="0-2" onclick="javascript:clicked(0, 2)">Less than five additional sources given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 20)/ 80 * 100;
+var target = document.getElementById ("0-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="1-2" onclick="javascript:clicked(1, 2)">Five additional sources given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 40)/ 80 * 100;
+var target = document.getElementById ("1-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="2-2" onclick="javascript:clicked(2, 2)">Ten additional sources given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 50)/ 80 * 100;
+var target = document.getElementById ("2-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="3-2" onclick="javascript:clicked(3, 2)">Fifteen good additional sources given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 60)/ 80 * 100;
+var target = document.getElementById ("3-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="4-2" onclick="javascript:clicked(4, 2)">Twenty good additional sources given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 70)/ 80 * 100;
+var target = document.getElementById ("4-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="5-2" onclick="javascript:clicked(5, 2)">At least twenty-five excellent sources of information given.
+
+Sources are described and commented on.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((30/100) * 80)/ 80 * 100;
+var target = document.getElementById ("5-2");
+target.setAttribute ("name", worth);
+</script>
+
+  
+</TR>
+<TR>
+  <TD>Organisation (10)<br> How well organised the material is.</TD>
+  
+  <TD ID="0-3" onclick="javascript:clicked(0, 3)">Poorly organised and hard to follow.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 20)/ 80 * 100;
+var target = document.getElementById ("0-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="1-3" onclick="javascript:clicked(1, 3)">Able to follow the report. English quality is low. Spelling and grammar is poor, with many errors.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 40)/ 80 * 100;
+var target = document.getElementById ("1-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="2-3" onclick="javascript:clicked(2, 3)">Able to follow the report. Reasonable standard of English. Few grammar or spelling errors.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 50)/ 80 * 100;
+var target = document.getElementById ("2-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="3-3" onclick="javascript:clicked(3, 3)">Notebook is easy to follow. Good standard of English. Few grammar or spelling mistakes.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 60)/ 80 * 100;
+var target = document.getElementById ("3-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="4-3" onclick="javascript:clicked(4, 3)">Notebook is easy to follow. Very good standard of English.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 70)/ 80 * 100;
+var target = document.getElementById ("4-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+  <TD ID="5-3" onclick="javascript:clicked(5, 3)">Notebook is excellent and well organised. Excellent standard of English. The writing is concise.</TD>
+
+<script>
+// it was easier to set this in JavaScript rather than set it via the HTML generator
+// the name of the cell is its worth
+var worth = ((10/100) * 80)/ 80 * 100;
+var target = document.getElementById ("5-3");
+target.setAttribute ("name", worth);
+</script>
+
+  
+</TR>
+
+</TABLE>
+<BR/>
+<div style="display: inline-block">Estimated Total: </div><div style="display: inline-block" id="total">0</div>
+
+<script>
+
+var total = 0;
+
+function gradeMap (mark){
+
+  var allowedGrades = [0, 10, 25, 30, 35, 42, 45, 48, 52, 55, 58, 62, 65, 68, 74, 81, 89, 96, 100];
+
+
+  bestFit = 0;
+  bestDistance = 100;
+  for (i =0; i < allowedGrades.length; i ++) {
+    var distance = Math.abs (mark - allowedGrades[i]);
+
+    if (distance < bestDistance) {
+      bestFit = i;
+      bestDistance = distance;
+    }
+  }
+  return (""+allowedGrades[bestFit]);
+}
+
+function clicked (cellIDX, cellIDY){
+
+var x = 0;
+var found = true;
+// remove coloured backgrounds
+while (found == true){
+    var parent = document.getElementById (x+"-"+cellIDY);
+    if (parent != null) {
+      if (x != cellIDX) { // skip the cell that was clicked
+                          // so we know if the user has deselected an option
+        if (parent.getAttribute ("style") == "background-color: orange") {
+          parent.setAttribute ("style", "background-color: white");
+          total = total - Math.round(Number(parent.getAttribute ("name")));
+        }
+      }
+    x = x +1;    
+  } else {
+    found = false;
+  }
+}
+
+// set/remove colour background
+var parent = document.getElementById (cellIDX+"-"+cellIDY);
+if (parent.getAttribute ("style") == "background-color: orange") {
+  total = total - Math.round (Number(parent.getAttribute ("name")));
+  parent.setAttribute ("style", "background-color: white");
+} else {
+  parent.setAttribute ("style", "background-color: orange");
+  total = total + Math.round(Number(parent.getAttribute ("name")));
+}
+document.getElementById("total").innerHTML = gradeMap (total);
+//total;
+}
+
+
+</script>
+
+  <script>
+    var baseUrl = getQueryVariable("baseUrl")
+    msGraphApiRoot = (baseUrl) ? baseUrl : "https://graph.microsoft.com/v1.0/me";
+
+    var data = loadFromCookie();
+    if (data)
+    {
+      if (!baseUrl)
+        msGraphApiRoot = data.apiRoot;
+      showCustomLoginButton(!data.signedin)
+    }
+
+    $(document).on({
+      ajaxStart: function() {$('body').addClass('loading');},
+      ajaxStop:  function() {$('body').removeClass('loading');}
+    });
+
+    function uploadItem (){
+          var contentURL = msGraphApiRoot + "/drive/items/" + itemID + "/content";
+
+          var assignmentData = Array(maxX+1);
+          for (var i = 0; i <= maxX; i ++){
+            assignmentData[i] = Array(maxY+1);
+            for (var j = 0; j <= maxY; j ++){
+              var parent = document.getElementById (i+"-"+j);
+              if (parent != null) {
+                if (parent.getAttribute ("style") == "background-color: orange") {
+                  assignmentData[i][j] = 1;
+                } else {
+                  assignmentData[i][j] = 0;
+                }
+              }
+            }
+          }
+
+          $.ajax({
+            url: contentURL,
+            dataType: 'json',
+            type: 'put',
+            headers: { "Authorization": "Bearer " + globalToken },
+            data: JSON.stringify (assignmentData),
+            success: function(data) {
+              if (data) {
+              }
+            }
+          });
+    return (false);
+    }
+
+    function downloadItem (){
+          var createAddDir = msGraphApiRoot + "/drive/root/children";
+          var appDataID = "";
+
+          var createFolder = { 
+            "name": settingDir,
+            "folder": { },
+            "@microsoft.graph.conflictBehavior": "fail" // if it doesn't work it exists so don't worry (famous last words)
+          };
+
+          $.ajax({
+            url: createAddDir,
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'post',
+            async: false,
+            headers: { "Authorization": "Bearer " + globalToken },
+            accept: "application/json;odata.metadata=none",
+            data: JSON.stringify (createFolder)
+          });
+
+
+          var contentURL = msGraphApiRoot + "/drive/root:" + fileName; 
+          $.ajax({
+            url: contentURL,
+            dataType: 'json',
+            headers: { "Authorization": "Bearer " + globalToken },
+            accept: "application/json;odata.metadata=none",
+            success: function(data) {
+              if (data) {
+                itemID = data['id'];
+                $('#od-value').val (data['@microsoft.graph.downloadUrl']);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  var assignmentData = JSON.parse (xhttp.responseText);
+                  for (var i = 0; i <= maxX; i ++){
+                    for (var j = 0; j <= maxY; j ++){
+                      var isChecked = assignmentData[i][j];
+                      if (isChecked == 1){
+                        clicked (i, j);
+                      }
+                    }
+                  }
+                document.getElementById("od-title").innerHTML = pageTitle;
+                saved = 1;
+                }
+                };
+                xhttp.open("GET", data['@microsoft.graph.downloadUrl'], true);
+                xhttp.send();
+              }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              // creating the setting file since it doesn't exist
+            var contentURL = msGraphApiRoot + "/drive/root:" + fileName + ":/content";
+            $.ajax({
+              url: contentURL,
+              dataType: 'json',
+              contentType: 'text/plain',
+              type: 'put',
+              async: false,
+              data: "[]",
+              headers: { "Authorization": "Bearer " + globalToken },
+              accept: "application/json;odata.metadata=none",
+              success: function (data){
+                if (data){
+                  itemID = data['id'];
+                }
+              }
+            });
+              uploadItem ();
+            }
+          });
+    return (false);
+    }
+
+    odauth();
+  </script>
+
+</BODY>
+</HTML>
