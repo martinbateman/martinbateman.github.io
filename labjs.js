@@ -201,4 +201,7 @@ for (i = 0; i < coll.length; i++) {
 }
 
 
+document.getElementById("od-title").innerHTML = pageTitle;
+
+
 odauth ();
