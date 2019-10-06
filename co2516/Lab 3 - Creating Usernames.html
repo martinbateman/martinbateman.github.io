@@ -1,0 +1,143 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "3";
+    var sessionTitle = "Creating Usernames";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Intoduction</div>
+<p>
+In this lab you are going to start to create a user import script. You are going to create the data import
+part of the script. You will read a CSV file which contains user details. You will check that those details
+make sense (i.e. that they are valid) and it will produce a username for the user based on thier name.
+</p>
+
+<div class="subtitle">Instructions</div>
+
+<p>
+In your Windows 10 Virtual Machine download and install Python 3.6 x86 MSI Installer from <a href="https://www.activestate.com/products/activepython/downloads/">here</a>.
+</p>
+<p>
+The editor for Python is called Idle. You can use it to write and run Python programs. Since Python is a scripting
+language there is no need to compile your program before running it. Start IDLE. First it will show you the Python shell. Select File then New.
+You will see a blank window that looks a little like notepad. Type the progam as shown below
+</p>
+
+<div>
+print ("Hello World!")
+</div>
+<p>
+Press F5 to save and run your program. You will be prompted to save your program. Use hello as the filename. Look in the Python shell for the output. If you have any problem ask
+the lab demonstrator for help.
+</p>
+
+<p>
+Now that you have run your first Python you should create a python script that reads in userimport.csv using the CSV reader shown in lectures. You should
+ignore the first line as it contains the name of the colums.
+</p>
+
+The rules for creating the user names are
+<ul>
+	<li>Take the first letter of the first name and the entire second name and concatanate them. Convert the username to lowercase, e.g.</li>
+	<ul>
+	  <li>Martin Bateman &rarr;  mbateman</li>
+	</ul>
+	<li>You should ignore any user's where either the first name or surname is missing</li>
+</ul>
+
+<p>
+Examples of the expected user input and output are shown in the table below
+
+<table border=1>
+<tr>
+  <td>Firstname</td><td>Surname</td>
+</tr>
+<tr>
+  <td>Martin</td><td>Bateman</td>
+</tr>
+<tr>
+  <td>Lesley</td><td>May</td>
+</tr>
+<tr>
+  <td></td><td>Mitchell</td>
+</tr>
+<tr>
+  <td>Nicky</td><td></td>
+</tr>
+</table>
+</p>
+<p>
+The example output is shown below<br/>
+mbateman<br/>
+lmay
+</p>
+<div class="subtitle">Advanced</div>
+<p>
+Attempt to automatically generate a random password for each user. You will have to look up from the Python documentation how to 
+generate random characters and how to concatenate (join) them to a string.
+</p>
+
+<script>
+<!-- turn off the tasks tracking. -->
+$(window).on('load', function () {
+ clicked = function (i) {}
+
+ // add the name of the li to the li as an ID
+ lis = document.getElementById ('instructions').getElementsByTagName ('li');
+ for (i = 0; i < lis.length; i ++){
+    lis[i].setAttribute ("id", "question-" + lis[i].innerHTML);
+ }
+
+
+});
+</script>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
+</body>
+</html>
+
