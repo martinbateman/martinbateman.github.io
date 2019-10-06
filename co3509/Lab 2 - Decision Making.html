@@ -1,0 +1,100 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO3509";
+    var sessionNumber = "2";
+    var sessionTitle = "Decision Making";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Intoduction</div>
+<p>
+This lab re-enforces the multi-criteria decision making process from the lecture. We will be discussing your solutions for this lab exercise at the end of the lab. Be prepared to justify your solutions.
+</p>
+<p>
+Form into small groups of 3 or 4. In your group you are to perform an analysis in order to choose the computers which should be used in the labs of the School of Computing, Made-Up University 
+(NB its range of degree programmes are the same as UCLan). These machines are to be used by both undergraduate and postgraduate students as part of their degree programmes. You should choose the 
+Operating system for one of the following labs:
+</p>
+<ul>
+  <li>Networking</li>
+  <li>General purpose</li>
+  <li>Software development (including Games development)</li>
+</ul>
+
+<p>
+You should create a multi-critiera decision table to aid you in deciding which operating systems should be used for one type of lab. Remember these machines are to be used within an enterprise, 
+therefore the design goals from todayʼs lecture will be useful as a starting point. Once you have created your table you should try assessing three different operating systems:
+</p>
+<ul>
+  <li><a href="https://www.microsoft.com/en-gb/windows">Windows 10</a>, Accessed 01 October 2018
+  <li><a href="http://www.ubuntu.com/download/desktop">Ubuntu Desktop 18.04</a>, Accessed 01 October 2018
+  <li><a href="https://www.apple.com/uk/macos/mojave/">macOS Mojave</a>, Accessed 01 October 2018
+</ul>
+
+
+<p>
+It is important that during a decision process you do not allow personal feeling to interfere with the decision making process, your decision and weight of the criteria should be impartial. 
+The following criteria, or variations of the follow are not valid reasons for making the decision
+</p>
+<ul>
+  <li>I don't know X very well, therefore I'll rank X badly - You may be missing a good product, X may have all the features you need.</li>
+  <li>I prefer Y - A personal preference very rarely a valid reason to make a decision of this kind.</li>
+</ul>
+
+<p>
+You have 20 minutes to discuss and create a decision table for one scenario. 
+After 20 minutes you should be prepared to present your decision - including justifications backed up by your decision table.
+</p>
+
+<p>
+Use the Class Notebook in <a href="https://teams.microsoft.com/l/team/19%3ac91b8c79ea7449d9ae83afbfafee73e9%40thread.skype/conversations?groupId=62d0b9d5-5efc-4660-8390-cc68edcf75af&tenantId=ebf69982-036b-4cc4-b202-7aeb194c5065">Teams</a>(code: sodby91) to document you decision table.
+</p>
+
+<script>
+<!-- turn off the tasks tracking. -->
+$(window).on('load', function () {
+ clicked = function (i) {}
+
+ // add the name of the li to the li as an ID
+ lis = document.getElementById ('instructions').getElementsByTagName ('li');
+ for (i = 0; i < lis.length; i ++){
+    lis[i].setAttribute ("id", "question-" + lis[i].innerHTML);
+ }
+
+
+});
+</script>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+

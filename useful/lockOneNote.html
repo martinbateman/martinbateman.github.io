@@ -1,0 +1,35 @@
+<HTML>
+<head>
+  <title>Lock</title>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/style.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+  <script>
+    var moduleCode = "CO3509";
+    var assignmentNumber = "1";
+    var pageTitle = "CO3509 Lab 1 - Example";
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title">Lock OneNote Classroom</div>
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+  </div>
+</BODY>
+</HTML>
+
