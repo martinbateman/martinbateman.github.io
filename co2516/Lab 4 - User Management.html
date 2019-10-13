@@ -40,8 +40,10 @@ a domain. Once you have completed this lab you should be able to log into your W
 </p>
 
 <ol id="instructions">
+<p>
 Using your Windows Server 2016 you are going to install Active Directory and create a number of users, each user will have different abilities.
-  <li>Turn on your Windows Server 2016 and login using your password.
+</p>
+  <li>Turn on your Windows Server 2016 and login using your password that you set in week 1.
 </li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
@@ -55,7 +57,7 @@ Using your Windows Server 2016 you are going to install Active Directory and cre
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
- <li>choose Settings $\rightarrow$ Server Info</li>
+ <li>choose Settings &rarr; Server Info</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
@@ -67,7 +69,7 @@ Using your Windows Server 2016 you are going to install Active Directory and cre
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
- <li>enter win2019-ad as the Computer name and click OK</li>
+ <li>enter win2016-ad as the Computer name and click OK</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 </ol>
@@ -176,11 +178,11 @@ Using your Windows Server 2016 you are going to install Active Directory and cre
 <div class="content"></div>
 
 <ol>
-<li>Click win2019-ad</li>
+<li>Click win2016-ad</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
-<li>Right click win2019-AD and select Configure a DNS server</li>
+<li>Right click win2016-ad and select Configure a DNS server</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
@@ -319,7 +321,7 @@ Using your Windows Server 2016 you are going to install Active Directory and cre
 <div class="content"></div>
 
 <li>Fill in your own details for your new user and click OK.<br>
-Make sure you include the Administrator group for your new user. This will mean your new user can log into the Windows Server 2019 machine.</li>
+Make sure you include the Administrator group for your new user. This will mean your new user can log into the Windows Server 2016 machine.</li>
 <div class="collapsible" align="right">[help]</div>
 <div class="content"></div>
 
@@ -330,6 +332,21 @@ Make sure you include the Administrator group for your new user. This will mean 
 </ol>
   </div>
   <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
 </body>
 </html>
 
