@@ -1,0 +1,215 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO3509";
+    var sessionNumber = "5";
+    var sessionTitle = "Measurement Tools";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<p>
+You are going to investigate the measurement tools which have been mentioned in the recent lectures - namely tcping and pathChirp.
+You will be comparing these tools to the traditional ping and iperf. You will use the topology you created in the last lab (Figure \ref{systemTopology}).
+</p>
+
+<ol id="instructions">
+<div class="subtitle">Set up the development environment</div>
+
+  <li>First you will need to download and compile the pathChirp package. Download a copy of the Gzipped source from <a href="http://www.spin.rice.edu/Software/pathChirp">here</a></li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>Install a development environment by running the following in a terminal<br/>
+sudo apt-get install build-essential</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>Run<br/>
+ gunzip ./pathchirp-2.4.1.tar.gz </li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+  <li>Run<br/>
+ tar -xvf ./pathchirp-2.4.1.tar</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Run<br/>
+cd ./pathchirp-2.4.1
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Run<br/>
+./configure
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Run<br/>
+make
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Run<br/>
+cd ./Bin/i686
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>From the Bin/i686 directory you can now run the progams as follows. From any other directory you will need to give the full path to the executables.<br/>
+./pathchirp_rcv<br/>
+./pathchirp_snd<br/>
+ ./pathchirp_run<br/>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+
+ <li>This will have installed pathChirp on only one computer. You can either repeat this process to install it on
+the other two computers, or you can copy the binaries to the other machines using sftp.<br/>
+mb@client:~$ sudo apt-get install tcptraceroute<br/>
+mb@client:~$ sudo wget http://www.vdberg.org/~richard/tcpping<br/>
+mb@client:~$ sudo chmod 755 tcpping<br/>
+<br/>
+There is a copy of tcpping on Blackboard. You only need this is http:/www.vdberg.org/ is down.
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Once installed attempt to use ping to get the round trip time (RTT) between the lab and www.google.com - what happens and why?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Now use tcpping (syntax is the same as ping) to measure the RTT between the lab and www.google.com - what happens and why?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Next use pathChirp to measure the bandwidth between your client and your server.<br/>
+<p>
+On your client run the command shown in Figure \ref{pathchirprcv}.
+</p>
+mb@client:~$ pathchirp_rcv
+<p>
+On your server run the command shown in Figure \ref{pathchirpsnd}.
+</p>
+mb@server:~$ pathchirp_snd
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  <li>Open a second terminal on your client and run the command shown below. You should
+replace server IP with the IP address of the sender, client IP with
+the IP address of the receiver and duration with the number of seconds to
+run the test for. I suggest you use 60 seconds for your first trail.
+<br/>
+mb@client:~$ pathchirp_run -S server IP -R client IP -t duration
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<div class="subtitle">Experiment</div>
+
+  <li>Now use tcpping (syntax is the same as ping) to measure the RTT between the lab and www.google.com - what happens and why?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+
+ <li>
+Firstly install the traffic shaper, this will allow you to artifically
+restrict the bandwidth into/out of the router.
+<br/>
+mb@router:~$ sudo apt-get install wondershaper
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+
+ <li>
+Restrict the bandwidths on the network (from the table) and test the network using both
+pathchirp and iperf.
+<p>
+Below an example of using wondershaper to
+set a download bandwdith of 512 Kbps and an upload bandwidth of 128 Kbps on eth0.
+<p>
+mb@router:~$ sudo wondershaper eth0 512 128
+</p>
+<p>
+You can remove the traffic shaping rules as shown below
+</p>
+<p>
+mb@router:~$ sudo wondershaper remove eth0
+</p>
+<table border=1>
+<tr>
+  <td colspan=2>Bandwdith (Kbps)</td><td>Pathchirp (Mbps)</td><td>iPerf (Mbps)</td>
+</tr>
+<tr>
+  <td>C &rarr; S </td><td>S &rarr; C</td>
+</tr>
+<tr>
+  <td>1024 </td><td>1024</td><td></td><td></td>
+</tr>
+<tr>
+  <td>2048</td><td>2048</td><td></td><td></td>
+</tr>
+<tr>
+  <td>4096</td><td>4096</td><td></td><td></td>
+</tr>
+<tr>
+  <td>8192</td><td>8192</td><td></td><td></td>
+</tr>
+<tr>
+  <td>16384</td><td>16384</td><td></td><td></td>
+</tr>
+</table>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+
+</body>
+</html>
+
