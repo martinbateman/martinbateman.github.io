@@ -1,0 +1,111 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO3509";
+    var sessionNumber = "8";
+    var sessionTitle = "Web Server Configuration";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to configuring Apache on www1 and www2 and populate the www root with a mirror of a website. We are going to use a mirror
+of the UCLan website. In this week's lab you will populate the website on both web servers with content. At the moment each web server will be seperate
+and next week you will configuring a load balancer.
+<p>
+
+
+<div class="subtitle">Instructions</div>
+
+<li>First you should install the Apache web server on each of www1 and www2.<br/>
+<p>
+mb@www1:~$ sudo apt-get update <br/>
+mb@www1:~$ sudo apt-get install apache2
+</p>
+<p>
+mb@www2:~$ sudo apt-get update <br/>
+mb@www2:~$ sudo apt-get install apache2
+</p>
+
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>From your home directory on each of the web servers (www1 and www2) mirror a subset of the UCLan website using the wget command.
+<p>
+mb@www1:~$ wget -mpk --level=1 http://www.uclan.ac.uk/
+</p>
+<p>
+mb@www2:~$ wget -mpk --level=1 http://www.uclan.ac.uk/
+</p>
+This creates a www.uclan.ac.uk directory in your home directory that contains a copy of a subset of the UCLan website.
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Deploy the website mirror into apache.
+<p>
+mb@www1:~$ cp -R www.uclan.ac.uk/* /var/www/
+</p>
+<p>
+mb@www2:~$ cp -R www.uclan.ac.uk/* /var/www/
+</p>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Test that you are able to access the content from the client using a web browser. Debug any problems and repeat the procedure for the second web server.
+<p>
+mb@www1:~$ cp -R www.uclan.ac.uk/* /var/www/
+</p>
+<p>
+mb@www2:~$ cp -R www.uclan.ac.uk/* /var/www/
+</p>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>How would you test that these web servers are working?</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+
+
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
