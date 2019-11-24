@@ -1,0 +1,95 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO3509";
+    var sessionNumber = "9";
+    var sessionTitle = "Clustering";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to configure your router as a simple round robin load balancer. You will then access your web sites using your 
+router's address and it will cluster the two www servers to appear as a single server.
+<p>
+
+
+
+
+<div class="subtitle">Instructions</div>
+
+<li>On your router install ipvasm using apt-get.
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Start the load balancer as follows<br/>
+<p>
+mb@router:~$ sudo ipvsadm -A -t 10.0.0.1:80 -s rr <br/>
+mb@router:~$ sudo ipvsadm -a -t 10.0.0.1:80 -r 10.0.1.10 -m <br/>
+mb@router:~$ sudo ipvsadm -a -t 10.0.0.1:80 -r 10.0.2.10 -m
+</p>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Test that the load balancer has started. Using your client, start a web browser and access the website at http://10.0.0.1/. Debug if there are any problems.<br/>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Make the load balancer settings persistent.<br/>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Reboot your router and check that the load balancing still works.<br/>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>How would you test that this load balancing works correctly. Add these tests to your OneNote.<br/>
+</li>
+<div class="collapsible">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+

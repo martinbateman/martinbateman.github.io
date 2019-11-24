@@ -1,0 +1,92 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "9";
+    var sessionTitle = "User Interface";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to be creating a graphical user interface. You should
+use ActiveState Python on a Windows client machine.
+</p>
+<p>
+You should create a user interface that allows you to install programs
+from the network.
+</p>
+<p>
+You should look at How to Install Software Available on the UCLan Network
+for inspiration on how the UI should look. I've included a copy on Blackboard.
+</p>
+<div class="subtitle">Instructions</div>
+
+ <li>You should draw the UI first (this could be on paper or on compuer) and then decide how that design will fit 
+into the grid layout and how you can use the components you have been taught in 
+the lecture.
+
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+<li>Using the information from the lecture and online take your UI design and implement it in Python.
+Your UI doesn't need to be functional, i.e. it doesn't need to actually the software, 
+next week's lecture and lab will examine the installation of software.
+
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content"></div>
+
+
+
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
+</body>
+</html>
+
