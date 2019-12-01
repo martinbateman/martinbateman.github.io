@@ -1,0 +1,122 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "10";
+    var sessionTitle = "Application Installation";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to investigate unattended installations of applications.
+</p>
+<p>
+For this lab you should use your Windows 10 client.
+</p>
+<div class="subtitle">Instructions</div>
+<li>Investigate <A href="https://www.google.co.uk/chrome/">Google Chrome</a> to find out how to make it silently install.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+Look for an enterprise edition. They usually come in as a .MSI and are easier to use
+</div>
+
+<li>Investigate <A href="http://www.rarlab.com/download.htm">WinRar</a> to find out how to make it silently install.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+Look for an enterprise edition. They usually come in as a .MSI and are easier to use
+</div>
+
+<li>Investigate <A href="http://www.openoffice.org/">OpenOffice</a> to find out how to make it silently install.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+Look for an enterprise edition. They usually come in as a .MSI and are easier to use
+</div>
+
+<li>Investigate <A href="http://www.adobe.com/uk/products/reader.html">Adobe Reader</a> to find out how to make it silently install.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+Look for an enterprise edition. They usually come in as a .MSI and are easier to use
+</div>
+
+<li>Investigate <A href="https://www.mozilla.org/en-GB/thunderbird/">Thunderbird</a> to find out how to make it silently install.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+Look for an enterprise edition. They usually come in as a .MSI and are easier to use
+</div>
+
+<li>You should add the functionality to silently install these applications to your GUI from last week.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+</div>
+
+
+
+<div class="subtitle">Advance</div>
+<li>
+Add CSV support so that the list of installable application can easily be changed.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+<li>Add categories to the application. This would allow a user to select which category of applications to display.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
+</body>
+</html>
+
