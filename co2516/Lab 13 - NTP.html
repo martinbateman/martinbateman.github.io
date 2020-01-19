@@ -1,0 +1,124 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "13";
+    var sessionTitle = "NTP";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you will be configuring NTP to create a consistent view of time across your network.
+
+<div class="subtitle">Instructions</div>
+
+<li>Log in to your Windows Server 2016.</li>
+<div>class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Start a command prompt.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Stop the Windows time service<br/>
+C:\&gt; net stop w32time
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Configure the NTP server list<br/>
+C:\&gt; w32tm /config /syncfromflags:manual /manualpeerlist:"ntp1.uclan.ac.uk, ntp2.uclan.ac.uk"
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Tell the domain controller that the sources are trusted<br/>
+C:\&gt; w32tm /config /reliable:yes
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Start the time service<br/>
+C:\&gt; net start w32time
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+
+<li>You can review the time service configuration.<br/>
+C:\&gt; w32tm /query /configuration
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<div class="subtitle">Advanced</div>
+
+<li>This lab describes a manual configuration for NTP time sources now you should configure
+a GPO to roll out an NTP configuration throughout your network.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+</ol>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+<script>
+(function () {
+    var div = document.createElement("div");
+    document.getElementsByTagName('body')[0].appendChild(div);
+    div.outerHTML = "<div id='botDiv' style='height: 38px; position: fixed; bottom: 0; right:0 ; z-index: 1000; background-color: #fff'><div id='botTitleBar' style='height: 38px; width: 400px; position:fixed; cursor: pointer;'></div><iframe width='400px' height='600px' src='https://webchat.botframework.com/embed/MartinBotman?s=6SHQGsBTkGA.P4pqpBpbHEdoqhXVVmOhG3NyamC7p0XmlyIo-QFDbLE'></iframe></div>"; 
+
+    document.querySelector('body').addEventListener('click', function (e) {
+        e.target.matches = e.target.matches || e.target.msMatchesSelector;
+        if (e.target.matches('#botTitleBar')) { 
+            var botDiv = document.querySelector('#botDiv'); 
+            botDiv.style.height = botDiv.style.height == '600px' ? '38px' : '600px';
+        };
+    });
+}());
+</script>
+</body>
+</html>
+
