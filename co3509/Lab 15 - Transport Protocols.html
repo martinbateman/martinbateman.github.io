@@ -1,0 +1,118 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO3509";
+    var sessionNumber = "15";
+    var sessionTitle = "Transport Protocols";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+
+<div class="subtitle">Introduction</div>
+<p>
+
+In this lab you are going to investigate the performance of TCP vs UDP on various network conditions.
+<p>
+
+
+<div class="subtitle">Opening the connection</div>
+<p>
+Take your single stream ns-2 code from last week. Run the code as documented last week to create a tr (trace) file and a nam (animation) file. Use the single stream version with a 
+bandwith of 10Mbps and a delay of 10ms. Now use nam to view the created packets<br/>
+mb@lochindaal:~$ nan &lt;nam file name&gt;
+</p>
+
+<p>
+Nam allows you to play back the network stream using the play, stop, forward/reverse buttons. You can also change the playback rate using steps slider. Using nam examine the start of
+the connection (remember the connection starts at 0.5 seconds into the connection), look for the three way handshake. Jot down the times when the three way handshake starts and ends.
+Change the delay to each of 50ms, 100ms and 150ms and work out out the time for the threeway handshake.
+</p>
+
+
+<div class="subtitle">TCP Congetion Control</div>
+<p>
+Next we are going to look at how TCP behaves with long fat networks (LFN). Download the throughput.pl/delay.pl/jitter.pl and packetLoss.pl scripts from Blackboard and place them 
+in the home directory of your Linux machine that is running ns-2. 
+</p>
+<p>
+Taking your single stream code from last week, set the bandwdith to 10Mbps with a delay of 10ms and increase the simulation time from 6 seconds to 500 seconds. This is so TCP has time 
+to settle into its steady state behaviour. Run the simulation 
+</p>
+<p>
+mb@lochindaal:~$ perl ~/throughput.pl -t 1 -k &lt;trace file name&gt;
+</p>
+<p>
+Record the throughput. Now reset the delay and bandwdiths to the follow
+<p>
+<table border="1">
+<tr>
+  <td>Delay</td><td>Bandwidth</td>
+</tr>
+<tr>
+  <td>50ms</td><td>10Mbps</td>
+</tr>
+<tr>
+  <td>100ms</td><td>10Mbps</td>
+</tr>
+<tr>
+  <td>150ms</td><td>10Mbps</td>
+</tr>
+<tr>
+  <td>50ms</td><td>100Mbps</td>
+</tr>
+<tr>
+  <td>100ms</td><td>100Mbps</td>
+</tr>
+<tr>
+  <td>150ms</td><td>100Mbps</td>
+</tr>
+<tr>
+  <td>50ms</td><td>1000Mbps</td>
+</tr>
+<tr>
+  <td>100ms</td><td>1000Mbps</td>
+</td>
+<tr>
+  <td>150ms</td><td>1000Mbps</td>
+</tr>
+
+<p>
+For each settings re-run the simulation and calculate the throughput.
+</p>
+<p>
+In each case are you able to reach the the full (or close) to the full bandwidth of the connection? Why not?
+</p>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
