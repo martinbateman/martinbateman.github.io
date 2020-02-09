@@ -1,0 +1,215 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO2516";
+    var sessionNumber = "16";
+    var sessionTitle = "Web Proxy";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to add a Web Proxy to your network in order to get external web access for your network.
+You will be adding the as shown below. This will allow your clients to access the Internet.
+</p>
+
+<img src="data:image/png;base64,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"/>
+
+<p>
+Note in the diagram I've shown your network to be on VMNet11, you could be using any VMNet other than the networks
+for bridge, NAT or host-only.
+</p>
+
+<div class="subtitle">Web Proxy</div>
+
+<li>Download vyOS-1.1.0-i586-virt.iso from <a href="http://vyos.net/wiki/Main_Page">http://vyos.net/wiki/Main_Page</a>. I've also uploaded a copy to Blackboard.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Create a new Virtual Machine, with 1 CPU, 512 MB memory and two network cards the first should be VMNet11 (Or whichever VMNet your network uses.) and the second should be NAT.
+The NAT card will connect your network to the WWW. Sometimes VyOS detects the network cards in a different order. If you find you cannot connect to your router try switching the network type
+on your virtual network cards, i.e. The first is NAT and the second is VMNet11.
+<p>
+Boot the machine, when asked to login the details are
+<table border="1">
+<tr>
+  <td>Username</td><td>vyos</td>
+</tr>
+<tr>
+  <td>Password</td><td>vyos</td>
+</tr>
+</table>
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Type 'install image' and follow the on screen instruction. I suggest setting your vyos password to 'Pa55word'.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Once the installtion has finished type 'sudo reboot'.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Once the machine has rebooted type 'configure'.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Then 'set interfaces ethernet eth0 address 10.0.1.4/24'</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Then 'set interfaces ethernet eth1 address dhcp'.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Then 'set service webproxy listen-address 10.0.1.4 disable-transparent'. By default it will listen on port 3128.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Type 'save' and then 'commit' to save changes.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Type 'exit'.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<div class="subtitle">Testing</div>
+
+<li>Start your Windows client.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Log in and start Internet Explorer.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Left cick Tools at the top right of the Window.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Select Internet Options.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Select the Connections tab.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Left click LAN Settings.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Select 'Use a proxy server for your LAN'.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Enter
+<p>
+<table border="1">
+<tr>
+  <td>Proxy</td><td>10.0.1.4</td>
+</tr>
+<tr>
+  <td>Port</td><td>3128</td>
+</tr>
+</table>
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Click OK to dismiss the LAN connections settings dialog.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Click OK to dismiss the Internet Options Settings dialog.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Enter http://www.facebook.com/ in the address bar and check that you can browse the web.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<div class="subtitle">Active Directory</div>
+
+<li>You should now attempt to make the proxy setting part of your domain settings.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>You will need to edit the policy on the Group Policy Manager.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Look under User Configuration $\rightarrow$ Preferences &rarr; Control Panel Settings &rarr; Internet Settings</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
