@@ -1,0 +1,128 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO4509";
+    var sessionNumber = "4";
+    var sessionTitle = "Reconnaissance";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+The purpose of this exercise is to get comfortable with reconnaissance techniques and tools.
+</p>
+<p>
+You should make sure you are comfortable with the UNIX command line before starting this exercise.
+</p>
+<p>
+You should not target a host outside of the Lab for active probing as this could be perceived as an attack.
+</p>
+</p>
+<div class="subtitle">Instructions</div>
+
+<li>You should search online for articles stating which systems the School or University has. Try to find out the following
+<ul>
+  <li>How is Blackboard hosted. Can you determine anything about the technologies used?</li>
+  <li>Which email service do UCLan use?</li>
+  <li>Can you find any exploits for this provider? Do not attempt to use them.</li>
+</ul>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Use either http://whois.domaintools.com/ or the whois command to gather information on the University's domain.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Use the RIPE database at http://www.db.ripe.net/whois to find IP ranges of the University.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Use dig/nslookup or <a href="http://www.kloth.net/services/dig.php">http://www.kloth.net/services/dig.php</a> to query the DNS to find useful IP addresses - look for MX (mail) and NS (name server)</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+<div class="subtitle">Active machines</div>
+
+<p>
+At this point we are going to move into the virtual machines you have created in Azure Lab Services since you are going to be sending
+active probing which could look like an attack.
+</p>
+
+<li>Start Kali and youe CO4509 Webserver. Log into Kali Linux and find its IP address using "ip addr". Now using either ping or nmap perform a ping
+sweep on from 10.0.0.1 to 10.0.0.255.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+<li>Perform a port scan using nmap. What are the open services? What versions numbers are in use?</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+<li>Use either nmap or telnet to attempt to identify the host operating system.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+<li>Use Google to find a list of exploits for the host - combination of OS and services running. Search for common services first (http, ssh, etc) as they are more likely to have listed updated. </li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<div class="subtitle">Performing the attack</div>
+<p>
+At this point you would be in a position to perform a remote attack against the CO4509 Web Server
+</p>
+<p>
+What aspects of the network/hosts/applications could you change to hinder your information gathering?
+</p>
+
+<div class="subtitle">Advanced</div>
+
+<li>Download Metasploitable from <a href="https://information.rapid7.com/metasploitable-download.html">https://information.rapid7.com/metasploitable-download.html</a>.
+Once downloaded install it.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Using 
+<a href="http://www.kalitutorials.net/search/label/beginner">http://www.kalitutorials.net/search/label/beginner</a> or any other source investigate the security of Metasploitable.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
