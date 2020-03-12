@@ -1,0 +1,129 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO4509";
+    var sessionNumber = "5";
+    var sessionTitle = "Daemons";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+Today you are going to be configure
+</p>
+
+
+<li>Start the CO4509 Webserver</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Log in and diable the firewall using the following command
+<p>
+sudo ufw disable
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Start the Kali linux virtual machine</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Find the IP address of the CO4509 Webserver.</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+In case you have forgotten it is below
+<p>
+ip addr
+</p>
+</div>
+
+<li>From your kali machine attempt to connect to your CO4509 webser using ssh.
+<p>
+ssh co4509@ip address from previous step
+</p>
+You will need to enter the webserver password - it is co4509.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+
+<li>What happens? Explain the information presented on screen.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+
+<li>Exit and configure tcp-wrappers to prevent access. Remember this was covered in the lecture.
+</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+The files that are used to configure tcp-wrappers are shown /etc/hosts.allow and /etc/hosts.deny
+
+Only the root user can modify these files. You should restore these files to their original states at the end of your
+session. Create some backup copies in the usual way
+<p>
+cd /etc <br/>
+cp hosts.allow hosts.allow.BACKUP <br/>
+cp hosts.deny hosts.deny.BACKUP 
+</p>
+<p>
+Edit /etc/hosts.deny with your preferred text editor so that it contains the
+line shown below
+<p>
+ALL: ALL
+</p>
+<p>
+To what does the first occurrence of ALL refer?</br>
+To what does the second occurrence of ALL refer?
+</p>
+</div>
+
+<li>Try logging in via ssh again. Explain what happened.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Edit /etc/hosts.allow to allow access from only your kali linux to ssh.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Try logging in via ssh again. Explain what happened.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
