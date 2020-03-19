@@ -1,0 +1,254 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO4509";
+    var sessionNumber = "6";
+    var sessionTitle = "Tripwire";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+Tripwire is software for "intrusion detection" or, more precisely, software for detecting whether files have changed.
+</p>
+<p>
+Tripwire creates MD5 hashes of files at the time of its initialisation and stores them securely. At later times (e.g. every day or when otherwise requested) it recomputes the hashes of the files and compares them with those computed initially. Any files that have been changed will thus be revealed. Even if an attacker changes a file while keeping it at the same size the change will be detected.
+</p>
+<p>
+Usually tripwire will be set to run at regular intervals - e.g. every 24 hours, running at night because it can slow the system.
+</p>
+<p>
+Tripwire is available for Unix / Linux and Windows, and in open source and commercial versions.
+</p>
+<li>On your Ubuntu virtual machine install tripwire
+<p>
+sudo apt-get install tripwire
+</p>
+<p>
+The installation process will ask a couple of questions. You will be 
+asked a number of questions. You should agree with them. During the 
+install you will be prompted for a site-key passphrase. Pick a password 
+that you can remember. 
+</p>
+
+<li>Initialise the database 
+Logon, move to or create a directory for this topic, then switch to su. Type the command shown below.
+
+<p>
+tripwire --init
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Enter the local pass phrase.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Run a check.
+<p>
+tripwire --check 
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>View the screen output, explain its structure and outline its contents. Locate the path and filename of the associated report.
+<p>
+To see the effect of modifying a system file.
+</p>
+<p>
+cp /etc/hosts.deny  /etc/hosts.deny.BACKUP
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Now edit the hosts.deny file (which is in the etc folder) with your preferred text editor (e.g. gedit) and add a comment line at the end of the file which includes your initials.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Run the check again (command below). You might want to redirect (&gt;) the output of the check from the screen to a file so that you can refer to it later. 
+<p>
+tripwire --check 
+</p>
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Ensure it finds this change. Explain why tripwire might not report a change.
+If successful, note the path and filename of the report shown within this output of the check. If not look ahead to Part 2 of this practical for clues.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Show the output from the check
+<p>
+twprint –m r --twrfile location | more
+</p>
+<p>
+Where location is the path and filename of the report e.g. /var/lib/tripwire/report/filename
+</p>
+<p>
+Use space bar to page down and q to quit.
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li>Compare this report with the screen output from issuing a check and explain the differences. 
+<ul>
+  <li>Find the appropriate entry and explain which part of the report it is displayed.</li>
+  <li>What is parsing?</li>
+  <li>Explain the terms: Inode, CRC32</li>
+</ul>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Be sure that you understand what all of the above commands are doing and clearly explain them.
+<ul>
+  <li>Explain the purpose and features of twprint.</li>
+  <li>Why do some qualifiers begin with one dash (e.g. m r) and others with two dashes (e.g check)?</li>
+</ul>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<div class="subtitle">Modifying the tripwire policy</div>
+
+
+<li>Assuming this not a continued session from Part 1.
+<p>
+Logon and switch to su.
+Edit the hosts.deny file in the etc folder, by adding a comment line at the end of the file and run a check (Figure \ref{runtripwire}).
+</p>
+<p>
+tripwire --check 
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+
+<li>Ensure tripwire identifies the change. Modify the policy Make a backup copy (see below) of the tripwire policy, in case of accidents while editing.
+<p>
+cp /etc/tripwire/twpol.txt /etc/tripwire/twpol.txt.BACKUP
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+
+<li>Exclude  /etc/hosts.deny from /etc/tripwire/twpol.txt namely, find and comment it out (with the exclamation character (!))  using 
+your favourite editor (e.g. gedit). Also if any system files have been identified as missing when running the check ensure they are commented out. 
+<p>
+After editing, re-create the policy file (in /etc/tripwire).
+</p>
+<p>
+twadmin --create-polfile /etc/tripwire/twpol.txt 
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Enter the site pass phrase when prompted. The above command creates a new /etc/tripwire/tw.pol. 
+<p>
+tripwire --check 
+</p>
+What happens and why? 
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+<li><p>Now re-initialise the database (see below).</p>
+<p>
+tripwire --init
+</p>
+<p>
+Enter local pass phrase
+</p>
+<p>
+There should not now be a list of missing system files. 
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+
+
+<li><p>
+Re-edit hosts.deny to take out your changes and run another check.
+Examine the report and explain the output.
+</p>
+<p>
+NB run the commands shown in Figure \ref{cleaningup} before you leave.
+</p>
+<p>
+cp /etc/tripwire/twpol.txt.BACKUP /etc/tripwire/twpol.txt<br/>
+/usr/sbin/twadmin --create-polfile /etc/tripwire/twpol.txt<br/>
+/usr/sbin/tripwire --init<br/>
+</p>
+<p>
+Enter local pass phrase when prompted.
+</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
