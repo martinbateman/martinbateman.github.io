@@ -1,0 +1,126 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO4509";
+    var sessionNumber = "7";
+    var sessionTitle = "Encryption";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you are going to examine some encryption techniques using <a href="http://cryptool-online.org/">Cryptool</a>
+</p>
+
+<div class="subtitle">Instructions</div>
+
+<li>Using Cryptool Online (<a href="http://www.cryptool-online.org/">here</a>) click Ciphers then Caesar.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Read the Description on the Caesar Cipher so you understand how it is working.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Go to the Cipher tab you will be presented with an interface to encrypt and decrypt text using a Caesar cipher.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Click Rot-13 at the bottom of the page.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Then click parse alphabet and enable Lower case and disable Upper case.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Now type a message into the Plaintext dialog box.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Note the encryption process is shown in real time at the bottom of the page.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li><p>Post your cipher text to the Teams chat in the General channel. Take one from the Teams chat and attempt to decrypt it.</p>
+    <p>In the Week 7 - Encryption channel on Teams post the decryption (along with the cipher text) to the text you are attempting to decrypt.</p>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Repeat the process with Monoalphabetic Substitution
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Repeat the process with Homophonic Cipher</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<div class="subtitle">Crytanalysis</div>
+
+<li>Read the section on Cryptanalysis. Working in small groups, if possible or on your own, attempt to break the text shown on <a href="http://www.cryptoprograms.com/tools/frequency">this page</a> using a frequency analysis.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Each group should encrypt two messages using
+  <ul>
+    <li>Monoalphabetic Substitution</li>
+    <li>Homophonic Cipher</li>
+  </ul>
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Swap with other groups, via the week 7 channel in Teams, and attempt a cryptanalysis in order to decipher the message.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+</ol>
+
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
