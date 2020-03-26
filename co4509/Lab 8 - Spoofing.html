@@ -1,0 +1,76 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO4509";
+    var sessionNumber = "8";
+    var sessionTitle = "Spoofing";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<ol id="instructions">
+<div class="subtitle">Introduction</div>
+<p>
+In this lab you will be exploring spoofing techniques.
+</p>
+
+<div class="subtitle">Instructions</div>
+
+<li>Form small groups. you can use any communication media you like. Of course I suggest using Teams, although you shouldn't use the Team for the module. You can
+work alone if you would like.
+</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Work together to design an email that would be able to fool other students into giving away some of their personal information.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>One you are happy with you email. Post it to the Week 8 - Spoofing channel on the Teams site for discussion.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Find another groups email and review it. You should look at what you think would work and not work to fool students to give away their
+personal information.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+
+<li>Revise your email based on the feedback.</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content">
+</div>
+</ol>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
+
