@@ -1,0 +1,446 @@
+<HTML>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://martinbateman.github.io/labstyle.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://martinbateman.github.io/nanobar.min.js"></script>
+  <script id="odauth" src="https://martinbateman.github.io/odauth.js"></script>
+  <link rel="icon" href="https://d.sfx-df.ms/images/favicon.ico" type="image/x-icon">
+  <link rel="mask-icon" href="https://d.sfx-df.ms/images/mask_icon.svg" color="#094AB2">
+
+
+
+  <script>
+    var moduleCode = "CO1507";
+    var sessionNumber = "2";
+    var sessionTitle = "Converting Numbers";
+    var fileName = "/" + settingDir + "/" + moduleCode + "-lab-" + sessionNumber + ".json"; 
+    var pageTitle = moduleCode + " Lab " + sessionNumber + " - " + sessionTitle;
+    document.title = pageTitle;
+  </script>
+</head>
+<body>
+ <div id="od-site">
+    <div id="od-commands">
+      <div id="od-login" style="display: hidden">
+        <a href="#" onclick="signInToOneDrive()">Sign in to OneDrive</a>&nbsp;&nbsp;
+      </div>
+      <div id="od-logoff" style="display: hidden">
+        <a href="#" onclick="signOut()">Sign Out</a>
+      </div>
+    </div>
+    <div id="od-title"></div> <!-- this will get set later -->
+  </div>
+
+  <div id="od-loading"></div>
+  <div id="od-content">
+<script>
+
+var ids = [];
+
+function addAnswerSection (){
+  var me = document.currentScript;
+
+  var addHere = me.previousElementSibling;
+
+  li = addHere;
+  while (li.tagName != "LI") {
+    li = li.previousElementSibling;
+  }
+
+  var binary = li.innerHTML;
+  var type = li.getAttribute ("type");
+
+  var table = document.createElement ("table");
+  table.setAttribute ("id", "table-" + binary);
+  table.setAttribute ("border", 1);
+  row1 = table.insertRow(0);
+  row2 = table.insertRow(1);
+
+  if (type == "b" || type == "d"){
+    var binLine = 1;
+    for (var i = 0; i <= 7; i++){
+      cell1 = row1.insertCell (0);
+      cell1.innerHTML = "<input size=3 value=\"" + binLine + "\">";
+      binLine = binLine *2;
+      cell2 = row2.insertCell (0);
+      cell2.innerHTML = "<input size=3>";
+    }
+  }
+  if (type == "dh"){
+    var binLine = 1;
+    for (var i = 0; i <= 3; i++){
+      cell1 = row1.insertCell (0);
+      cell1.innerHTML = "<input size=3 value=\"" + binLine + "\">";
+      binLine = binLine *16;
+      cell2 = row2.insertCell (0);
+      cell2.innerHTML = "<input size=4>";
+    }
+  }
+  if (type == "hb") {
+      row3 = table.insertRow(2);
+
+      cell1 = row1.insertCell (0);
+      cell1.innerHTML = "<input size=3 value=\"" + binary[1] + "\">";
+      cell1.setAttribute ("colspan", "4");
+      cell1 = row1.insertCell (0);
+      cell1.innerHTML = "<input size=3 value=\"" + binary[0] + "\">";
+      cell1.setAttribute ("colspan", "4");
+ 
+      var binValue = 1;
+      for (var i = 0; i <= 7; i++){
+        cell2 = row2.insertCell (0);
+        cell2.innerHTML = "<input size=4 value=\"" + binValue + "\">";
+
+
+        cell3 = row3.insertCell (0);
+        cell3.innerHTML = "<input size=4>";
+
+        binValue = binValue * 2;
+        if (binValue == 16) {
+          binValue = 1;
+        }
+      }
+    
+  }
+
+  me.parentNode.insertBefore (table, me);
+  me.parentNode.insertBefore (document.createTextNode ("Answer: "), me);
+  input = document.createElement ("input");
+  if (type == "b"){
+    input.setAttribute ("size", 3);
+  }
+  if (type == "d" || type == "hb") {
+    input.setAttribute ("size", 8);
+  }
+  input.setAttribute ("id", "answer-"+binary);
+  me.parentNode.insertBefore (input, me);
+
+
+  button = document.createElement ("input");
+  button.setAttribute ("id", "button-"+binary);
+  button.setAttribute ("type", "button");
+  button.setAttribute ("value", "Check");
+  button.setAttribute ("onclick", "javascript:checkAnswer('" + binary + "');");
+  me.parentNode.insertBefore (button, me);
+  ids.push (binary);
+}
+
+function calcProgressBar (){
+  var total = 0;
+  for (var i = 0; i < ids.length; i ++) {
+    if (isCorrect (ids[i])) {
+      total = total + 1;
+    }
+  }
+  var percent = (total/ids.length) * 100;
+  nanobar.go (percent);
+}
+
+
+function isCorrect (i) {
+  var result = false;
+
+  var li = $("#question-" + i);
+  var type = li.attr ('type');
+  var answer = $("#answer-" + i);
+  var answerValue = answer.val ();
+  var buttonStr = "#button-"+i;
+  if (type=="b") { // deal with binary
+    var dec = parseInt (i, 2);
+    if (answerValue == dec){
+      result = true;
+    }
+  }
+  if (type == "d"){ // deal with decimal
+    var dec = parseInt (answerValue, 2);
+    if (i == dec){
+      result = true;
+    }
+  }
+  if (type == "hb") { // hex to binary
+    var qDec = parseInt (i, 16).toString (10);
+    var aDec = parseInt (answerValue, 2).toString (10);
+    if (aDec == qDec){
+      result = true;
+    }
+  }
+
+  return (result);
+}
+
+function checkAnswer (i){
+  var result = false;
+
+  var answer = $("#answer-" + i);
+  var answerValue = answer.val ();
+  var buttonStr = "#button-"+i;
+  if (isCorrect (i)){
+    answer.attr ("disabled", true);
+    $(buttonStr).attr ("disabled", true);
+    $(buttonStr).attr ("value", "correct");
+    result = true;
+  }
+
+  calcProgressBar ();
+}
+
+</script>
+
+<div class="subtitle">Binary to decimal Conversation</div>
+
+Using the method shown in the lecture convert the following numbers to 
+decimal
+
+<ol id="instructions">
+<li type="b">11001001</li>
+<div class="collapsible" align="right">[help]</div>
+<div class="content">
+<table border=1>
+  <tr>
+    <td><input size="3" readonly value="128"/></td>
+    <td><input size="3" readonly value="64"/></td>
+    <td><input size="3" readonly value="32"/></td>
+    <td><input size="3" readonly value="16"/></td>
+    <td><input size="3" readonly value="8"/></td>
+    <td><input size="3" readonly value="4"/></td>
+    <td><input size="3" readonly value="2"/></td>
+    <td><input size="3" readonly value="1"/></td>
+  </tr>
+  <tr>
+    <td><input size="3" readonly value="1"/></td>
+    <td><input size="3" readonly value="1"/></td>
+    <td><input size="3" readonly value="0"/></td>
+    <td><input size="3" readonly value="0"/></td>
+    <td><input size="3" readonly value="1"/></td>
+    <td><input size="3" readonly value="0"/></td>
+    <td><input size="3" readonly value="0"/></td>
+    <td><input size="3" readonly value="1"/></td>
+  </tr>
+</table>
+128 + 64 + 8 + 1 = Answer: <input id="q1a" value="201" size="5" readonly/><input type="button" value="Check"/>
+</div>
+<script>addAnswerSection (1);</script>
+
+<li type="b">01000111</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">10000110</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">00010001</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">10001000</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">00111110</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">01010101</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">10101010</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">11111111</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="b">00110011</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<div class="subtitle">Decimal to Binary conversion</div>
+
+<li type="d">65</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">200</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">87</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">13</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">245</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">75</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">123</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">111</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">43</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="d">99</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<div class="subtitle">Decimal to HEX conversion</div>
+
+<li type="dh">46753</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">10</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">43</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">65</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">32</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">201</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">255</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">123</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">214</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="dh">17</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<div class="subtitle">Hex to Binary Conversion</div>
+
+<li type="hb">F4</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">4A</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">E5</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">FF</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">11</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">9E</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">CC</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">1B</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">86</li>
+<div class="collapsible" align="right">&nbsp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+<li type="hb">DE</li>
+<div class="collapsible" align="right">&nsbp;</div>
+<div class="content"></div>
+<script>addAnswerSection ();</script>
+
+
+</ol>
+
+<script> 
+<!-- turn off the tasks tracking. We'll use the answer instead -->
+$(window).on('load', function () {
+ clicked = function (i) {}
+
+ // add the name of the li to the li as an ID
+ lis = document.getElementById ('instructions').getElementsByTagName ('li');
+ for (i = 0; i < lis.length; i ++){
+    lis[i].setAttribute ("id", "question-" + lis[i].innerHTML);
+ }
+
+
+});
+
+</script>
+  </div>
+  <script type="text/javascript" src="https://martinbateman.github.io/labjs.js"></script>
+</body>
+</html>
