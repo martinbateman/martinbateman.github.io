@@ -128,6 +128,9 @@ you do not need to do this. You do not need to create a virtual switch as one ha
 In Step 5 where you select the network you should select LabNet - this was precreated for you.
 </p>
 <p>
+A pre created disk image will be available on Blackboard if you struggle with this step.
+</p>
+<p>
 Start a terminal and the Chromium web browser. You will use the terminal to launch the attacks and the web browser to test access to
 the webserver.
 </p>
@@ -183,7 +186,7 @@ This shows the amount of traffic that is being consumed by the attack.
 
 <li>From Kali launch a SYN flood attack
 <p>
-hping3 --rand-source REPLACE WITH WEB SERVER IP --flood -S -L 0 -p 80
+sudo hping3 --rand-source REPLACE WITH WEB SERVER IP --flood -S -L 0 -p 80
 </p>
 <p>
 You should use tcpdump and bmon to investigate the amount of traffic used.
@@ -198,7 +201,7 @@ You should use tcpdump and bmon to investigate the amount of traffic used.
 
 <li>From Kali launch a UDP flood attack.
 <p>
-hping3 --flood --rand-source --udp -p 53 REPLACE WITH WEB SERVER IP
+sudo hping3 --flood --rand-source --udp -p 53 REPLACE WITH WEB SERVER IP
 </p>
 You should use tcpdump and bmon to investigate the amount of traffic used.
 
