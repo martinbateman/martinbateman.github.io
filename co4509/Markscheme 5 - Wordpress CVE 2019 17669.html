@@ -10,7 +10,7 @@ This page does not save your settings
 <TABLE BORDER=1>
 <TR>
   <TD></TD>
-  <td>Fail(30)</td>
+  <td>Fail(10)</td>
   <td>Pass(50)</td>
   <td>Merit(60)</td>
   <td>Distinction(70)</td>
@@ -18,59 +18,58 @@ This page does not save your settings
 
 </TR>
 <TR>
-  <TD>Issues (50)<br> Description of key/value databases and memcrashed.</TD>
+  <TD>Investigation (30)<br> Description of the way the investigation was performed</TD>
   
-  <TD ID="0-0" onclick="javascript:clicked(0, 0)">Brief description, details are not clear or elements of the description are completely missing.</TD>
+  <TD ID="0-0" onclick="javascript:clicked(0, 0)">Brief description.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((50/100) * 30)/ 80 * 100;
+var worth = ((30/100) * 10)/ 80 * 100;
 var target = document.getElementById ("0-0");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="1-0" onclick="javascript:clicked(1, 0)">Poor description of CDN.
-Poor description of CPDoS.</TD>
+  <TD ID="1-0" onclick="javascript:clicked(1, 0)">Investigation is superficial. Some security issues have been identified via the use of automatic tools.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((50/100) * 50)/ 80 * 100;
+var worth = ((30/100) * 50)/ 80 * 100;
 var target = document.getElementById ("1-0");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="2-0" onclick="javascript:clicked(2, 0)">Good description of both CDN and CPDoS. Or an excellent description of one.</TD>
+  <TD ID="2-0" onclick="javascript:clicked(2, 0)">Investigation is brief, fines some issues via not automatic means.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((50/100) * 60)/ 80 * 100;
+var worth = ((30/100) * 60)/ 80 * 100;
 var target = document.getElementById ("2-0");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="3-0" onclick="javascript:clicked(3, 0)">Excellent description of both CDN and CPDoS.</TD>
+  <TD ID="3-0" onclick="javascript:clicked(3, 0)">Good coverage on the single item of investigation.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((50/100) * 70)/ 80 * 100;
+var worth = ((30/100) * 70)/ 80 * 100;
 var target = document.getElementById ("3-0");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="4-0" onclick="javascript:clicked(4, 0)">Excellent description of CDN and CPDoS. Include technical details (code) with an explanation of how the exploit is triggered.</TD>
+  <TD ID="4-0" onclick="javascript:clicked(4, 0)">Excellent coverage of the item under investigation.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((50/100) * 80)/ 80 * 100;
+var worth = ((30/100) * 80)/ 80 * 100;
 var target = document.getElementById ("4-0");
 target.setAttribute ("name", worth);
 </script>
@@ -78,58 +77,58 @@ target.setAttribute ("name", worth);
   
 </TR>
 <TR>
-  <TD>Prevention (20)<br> Description of how to prevent the issue in the future.</TD>
+  <TD>Implications (30)<br> Descriptions of the issues found and there severity.</TD>
   
   <TD ID="0-1" onclick="javascript:clicked(0, 1)">Brief description.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 30)/ 80 * 100;
+var worth = ((30/100) * 10)/ 80 * 100;
 var target = document.getElementById ("0-1");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="1-1" onclick="javascript:clicked(1, 1)">Poor description of how to prevent the issue. Obvious means or only looks at one aspect of prevention.</TD>
+  <TD ID="1-1" onclick="javascript:clicked(1, 1)">Poor or obvious implications for each vulnerability found. Or only some implications are addressed or the implications don't match up with the severity of the problem.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 50)/ 80 * 100;
+var worth = ((30/100) * 50)/ 80 * 100;
 var target = document.getElementById ("1-1");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="2-1" onclick="javascript:clicked(2, 1)">Good description. When given to an export they could prevent the issue.</TD>
+  <TD ID="2-1" onclick="javascript:clicked(2, 1)">Limited description of the issue and the implications . Either all aspect covered but to a superficial level or only goes into detail of a few of the issues found.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 60)/ 80 * 100;
+var worth = ((30/100) * 60)/ 80 * 100;
 var target = document.getElementById ("2-1");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="3-1" onclick="javascript:clicked(3, 1)">Excellent description. Which when given to someone with technical knowledge would allow them to prevent the issue.</TD>
+  <TD ID="3-1" onclick="javascript:clicked(3, 1)">Good description of the issue and its implications. All issues addresses.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 70)/ 80 * 100;
+var worth = ((30/100) * 70)/ 80 * 100;
 var target = document.getElementById ("3-1");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="4-1" onclick="javascript:clicked(4, 1)">Clear technical detailed including code/configuration that needs to changed.</TD>
+  <TD ID="4-1" onclick="javascript:clicked(4, 1)">Excellent description of the issue and its implications. Accurate and concise description of each issue. Each issue includes a description of how to exploit the problem.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 80)/ 80 * 100;
+var worth = ((30/100) * 80)/ 80 * 100;
 var target = document.getElementById ("4-1");
 target.setAttribute ("name", worth);
 </script>
@@ -137,60 +136,58 @@ target.setAttribute ("name", worth);
   
 </TR>
 <TR>
-  <TD>Predictions (20)<br> Predictions of the implications of this exploit.</TD>
+  <TD>Securing (30)<br> Description of how to address the security issues raised discovered.</TD>
   
-  <TD ID="0-2" onclick="javascript:clicked(0, 2)">Short predictions which could be made by anyone, e.g. "it will become more important".</TD>
+  <TD ID="0-2" onclick="javascript:clicked(0, 2)">Brief description doesn't really secure the system.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 30)/ 80 * 100;
+var worth = ((30/100) * 10)/ 80 * 100;
 var target = document.getElementById ("0-2");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="1-2" onclick="javascript:clicked(1, 2)">Predictions of future impact are poor but seemingly correct. May just be just opinion or back by citations (which may not fully back up the case).</TD>
+  <TD ID="1-2" onclick="javascript:clicked(1, 2)">Poor or obvious way of securing the system, e.g. overall recommendation of just firewall or patching rather than the way of dealing with each problem.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 50)/ 80 * 100;
+var worth = ((30/100) * 50)/ 80 * 100;
 var target = document.getElementById ("1-2");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="2-2" onclick="javascript:clicked(2, 2)">Prediction of future impact are good but only backed up by opinion. Maybe few citations.</TD>
+  <TD ID="2-2" onclick="javascript:clicked(2, 2)">Limited description of how to secure the issues found.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 60)/ 80 * 100;
+var worth = ((30/100) * 60)/ 80 * 100;
 var target = document.getElementById ("2-2");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="3-2" onclick="javascript:clicked(3, 2)">Sensible predictions, backed by citations.</TD>
+  <TD ID="3-2" onclick="javascript:clicked(3, 2)">Good description of how to secure the issues found. Each identified issues is addressed.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 70)/ 80 * 100;
+var worth = ((30/100) * 70)/ 80 * 100;
 var target = document.getElementById ("3-2");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="4-2" onclick="javascript:clicked(4, 2)">Excellent predictions on future importance and effectiveness of cloud security security backed up by citations.
-
-Case made uses current literature (less than a year old).</TD>
+  <TD ID="4-2" onclick="javascript:clicked(4, 2)">Excellent description of how to secure the problems found.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((20/100) * 80)/ 80 * 100;
+var worth = ((30/100) * 80)/ 80 * 100;
 var target = document.getElementById ("4-2");
 target.setAttribute ("name", worth);
 </script>
@@ -198,20 +195,20 @@ target.setAttribute ("name", worth);
   
 </TR>
 <TR>
-  <TD>Presentation (10)<br> Writing quality</TD>
+  <TD>Documentation (10)<br> Grammar, spelling, formatting and how well the investigation is documented.</TD>
   
-  <TD ID="0-3" onclick="javascript:clicked(0, 3)">Lots of spelling and grammatical mistakes. Difficulty in understanding what was meant in some cases.</TD>
+  <TD ID="0-3" onclick="javascript:clicked(0, 3)">Very poor. For example not referenced, doesn't address the question or very poor spelling and grammar making it hard to understand.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
 // the name of the cell is its worth
-var worth = ((10/100) * 30)/ 80 * 100;
+var worth = ((10/100) * 10)/ 80 * 100;
 var target = document.getElementById ("0-3");
 target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="1-3" onclick="javascript:clicked(1, 3)">Some spelling and grammatical mistakes.</TD>
+  <TD ID="1-3" onclick="javascript:clicked(1, 3)">Some items are referenced. Poor grammar, spelling.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
@@ -222,7 +219,7 @@ target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="2-3" onclick="javascript:clicked(2, 3)">Few spelling and grammatical mistakes. All diagrams are labelled and presented logically.</TD>
+  <TD ID="2-3" onclick="javascript:clicked(2, 3)">Referenced. Good spelling, grammar. Layout is consistent and make sense.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
@@ -233,7 +230,7 @@ target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="3-3" onclick="javascript:clicked(3, 3)">Well written and grammatically correct.</TD>
+  <TD ID="3-3" onclick="javascript:clicked(3, 3)">Good quality documentation. All items referenced, figures are labelled.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
@@ -244,7 +241,7 @@ target.setAttribute ("name", worth);
 </script>
 
   
-  <TD ID="4-3" onclick="javascript:clicked(4, 3)">Publishable quality.</TD>
+  <TD ID="4-3" onclick="javascript:clicked(4, 3)">Excellent. Publishable quality.</TD>
 
 <script>
 // it was easier to set this in JavaScript rather than set it via the HTML generator
